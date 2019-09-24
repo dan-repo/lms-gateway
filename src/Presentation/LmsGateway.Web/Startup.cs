@@ -8,6 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
+using LmsGateway.Core.Infrastructure;
+using LmsGateway.Web.Infrastructure.Extensions;
+
 namespace LmsGateway.Web
 {
     public class Startup
@@ -27,6 +30,10 @@ namespace LmsGateway.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add application services.
+            services.AddTransient<ITypeFinder, AppTypeFinder>();
+            services.RegisterCustomServices(Configuration["Data:ConnectionString"]);
+
             // Add framework services.
             services.AddMvc();
         }

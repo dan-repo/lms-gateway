@@ -1,7 +1,13 @@
-﻿{
+{
   "version": "1.0.0-*",
 
   "dependencies": {
+    "LmsGateway.Core": "1.0.0-*",
+    "LmsGateway.Domain": "1.0.0-*",
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
+    "Microsoft.EntityFrameworkCore": "1.1.6",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.1.6",
+    "Microsoft.EntityFrameworkCore.Tools": "1.1.0-preview4-final",
     "NETStandard.Library": "1.6.1"
   },
 
@@ -9,5 +15,10 @@
     "netstandard1.6": {
       "imports": "dnxcore50"
     }
+  },
+
+  "tools": {
+    "Microsoft.EntityFrameworkCore.Tools": "1.1.0-preview4-final"
   }
 }
+
