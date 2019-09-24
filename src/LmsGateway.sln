@@ -3,8 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{E25DAD08-66E4-4BE4-B9F7-F99CF935EF17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{8B96FD7D-E545-4914-A917-6E838418660A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{33D2C3F8-C1A2-4A92-9092-1CB6660962C7}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LmsGateway.Web", "Presentation\LmsGateway.Web\LmsGateway.Web.xproj", "{A779D562-3AE4-42AC-807F-9E5E08BC2C16}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A779D562-3AE4-42AC-807F-9E5E08BC2C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A779D562-3AE4-42AC-807F-9E5E08BC2C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A779D562-3AE4-42AC-807F-9E5E08BC2C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A779D562-3AE4-42AC-807F-9E5E08BC2C16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A779D562-3AE4-42AC-807F-9E5E08BC2C16} = {E25DAD08-66E4-4BE4-B9F7-F99CF935EF17}
 	EndGlobalSection
 EndGlobal
