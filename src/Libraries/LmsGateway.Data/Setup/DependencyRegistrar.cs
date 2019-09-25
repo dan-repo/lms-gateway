@@ -17,27 +17,27 @@ namespace LmsGateway.Data.Setup
 
         public void Register(IServiceCollection services, string connectionString = null)
         {
-            services.AddDbContext<EFDataContext>(o => o.UseSqlServer(connectionString));
-            services.AddDbContext<EFIdentityContext>(o => o.UseSqlServer(connectionString));
+            //services.AddDbContext<EFDataContext>(o => o.UseSqlServer(connectionString));
+            //services.AddDbContext<EFIdentityContext>(o => o.UseSqlServer(connectionString));
 
-            services.AddIdentity<User, IdentityRole>(o =>
-            {
-                o.User.RequireUniqueEmail = true;
+            //services.AddIdentity<User, IdentityRole>(o =>
+            //{
+            //    o.User.RequireUniqueEmail = true;
 
-                o.Password.RequiredLength = 6;
-                o.Password.RequireNonAlphanumeric = false;
-                o.Password.RequireLowercase = false;
-                o.Password.RequireUppercase = false;
-                o.Password.RequireDigit = false;
+            //    o.Password.RequiredLength = 6;
+            //    o.Password.RequireNonAlphanumeric = false;
+            //    o.Password.RequireLowercase = false;
+            //    o.Password.RequireUppercase = false;
+            //    o.Password.RequireDigit = false;
 
-                o.Cookies.ApplicationCookie.LoginPath = "/Account/Login";
-            })
-            .AddEntityFrameworkStores<EFIdentityContext>()
-            .AddDefaultTokenProviders();
+            //    o.Cookies.ApplicationCookie.LoginPath = "/Account/Login";
+            //})
+            //.AddEntityFrameworkStores<EFIdentityContext>()
+            //.AddDefaultTokenProviders();
 
-            //services.AddTransient<IRepository<Media>, EFRepository<Media>>();
-            //services.AddTransient<IRepository<Gallery>, EFRepository<Gallery>>();
-            //services.AddTransient<IRepository<Event>, EFRepository<Event>>();
+            ////services.AddTransient<IRepository<Media>, EFRepository<Media>>();
+            ////services.AddTransient<IRepository<Gallery>, EFRepository<Gallery>>();
+            ////services.AddTransient<IRepository<Event>, EFRepository<Event>>();
         }
 
 

@@ -1,0 +1,25 @@
+﻿.courses.single .single-info h4 span:hover{
+	/*color:#00B06A;*/
+
+    color:#853111;
+}
+
+.courses.single .content h2:hover a{
+	/*color:#00B06A;*/
+    color:#853111;
+}
+.learnedu-sidebar .single-widget.categories ul li a:hover{
+	/*color:#00B069;*/
+    color:#ac3001;
+}
+.mail-success .mail h2 .primary{
+	/*color:#00B16A;*/
+    color:#853111;
+}
+.mail-success .mail .btn:before{
+	/*background:#00B16A;*/
+    background:#853111;
+}
+
+
+

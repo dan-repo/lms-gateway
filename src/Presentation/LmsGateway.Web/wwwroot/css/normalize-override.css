@@ -1,0 +1,42 @@
+﻿.book_preload {
+  background: #853111;
+}
+.book__page {
+  /*background: #15D588;*/
+  background: #ce4d1c;
+}
+@-webkit-keyframes flip {
+  20% {
+    background: #853111;
+  }
+  29.9% {
+    background: #853111;
+  }
+   30% {
+    background: #ce4d1c;
+  }
+  60% {
+    background: #ce4d1c;
+  }
+  100% {
+    background: #ce4d1c;
+  }
+}
+
+@keyframes flip {
+  20% {
+    background: #853111;
+  }
+  29.9% {
+    background: #853111;
+  }
+  30% {
+    background: #ce4d1c;
+  }
+  60% {
+    background: #ce4d1c;
+  }
+  100% {
+    background: #ce4d1c;
+  }
+}

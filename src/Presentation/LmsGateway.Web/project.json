@@ -23,7 +23,8 @@
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "Bower": "1.3.11",
     "LmsGateway.Core": "1.0.0-*",
-    "LmsGateway.Domain": "1.0.0-*"
+    "LmsGateway.Domain": "1.0.0-*",
+    "LmsGateway.Data": "1.0.0-*"
   },
 
   "tools": {

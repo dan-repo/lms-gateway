@@ -10,13 +10,18 @@ using Microsoft.Extensions.Logging;
 
 using LmsGateway.Core.Infrastructure;
 using LmsGateway.Web.Infrastructure.Extensions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LmsGateway.Web
 {
     public class Startup
     {
+        private readonly IHostingEnvironment _env;
+
         public Startup(IHostingEnvironment env)
         {
+            _env = env;
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -33,6 +38,14 @@ namespace LmsGateway.Web
             // Add application services.
             services.AddTransient<ITypeFinder, AppTypeFinder>();
             services.RegisterCustomServices(Configuration["Data:ConnectionString"]);
+
+            if (!_env.IsDevelopment())
+            {
+                services.Configure<MvcOptions>(options =>
+                {
+                    options.Filters.Add(new RequireHttpsAttribute());
+                });
+            }
 
             // Add framework services.
             services.AddMvc();
@@ -63,5 +76,9 @@ namespace LmsGateway.Web
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+
+
+
     }
 }
