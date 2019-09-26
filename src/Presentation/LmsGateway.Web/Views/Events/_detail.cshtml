@@ -1,0 +1,52 @@
+﻿@model EventModel
+
+<h1 >
+    <span>@Model.Category</span>
+</h1>
+<div class="single-event">
+    <div class="event-gallery">
+        <div class="single-gallery">
+    <img src="http://via.placeholder.com/690x460" alt="#" style="width:100%">
+
+        </div>
+
+        @*<div class="single-gallery">
+            <img src="http://via.placeholder.com/690x460" alt="#">
+        </div>
+        <div class="single-gallery">
+            <img src="http://via.placeholder.com/690x460" alt="#">
+        </div>*@
+
+    </div>
+    <div class="event-content">
+        <div class="meta">
+            <span><i class="fa fa-calendar"></i>@Model.DatePosted.Date.ToString("dd/MM/yyyy")</span>
+            <span><i class="fa fa-clock-o"></i>@Model.DatePosted.Date.ToString("hh:mm:ss")</span>
+
+            @*<span><i class="fa fa-calendar"></i>05 June 2018</span>
+            <span><i class="fa fa-clock-o"></i>12.00-5.00PM</span>*@
+        </div>
+        @*<h2><a href="event-single.html">Best Student Award Day 2018</a></h2>*@
+
+        <h2><a href="event-single.html">@Model.Title</a></h2>
+        <p>@Model.Content</p>
+
+
+        @*<p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words</p>*@
+        
+        @*<img src="http://via.placeholder.com/500x330" alt="#">*@
+        
+        @*<p> littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humours</p>*@
+        <div class="book-now">
+            <div class="button">
+                <a href="#" class="btn">Book Now</a>
+            </div>
+            <ul class="social">
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus "></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>

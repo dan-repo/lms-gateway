@@ -8,28 +8,17 @@ namespace LmsGateway.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public async Task<IActionResult> Index() => await Task.FromResult(View());
+       
+        public async Task<IActionResult> About() => await Task.FromResult(View());
+       
+        public async Task<IActionResult> Contact() => await Task.FromResult(View());
+      
+        public async Task<IActionResult> Error() => await Task.FromResult(View());
+      
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
 
-            return View();
-        }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
 
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
-        }
     }
 }

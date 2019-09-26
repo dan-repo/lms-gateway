@@ -1,0 +1,137 @@
+﻿@model IEnumerable<EventModel>
+
+<div class="learnedu-sidebar left">
+    <div class="search">
+        <div class="form">
+            <input type="email" placeholder="Search ...">
+            <button class="button" href="#"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+    <!-- Categories -->
+    @*<div class="single-widget categories">
+            <h3 class="title">Categories</h3>
+            <ul>
+
+               @foreach (EventModel model1 in Model)
+                {
+                    <li><a asp-route-id="@model1.Id"><i class="fa fa-angle-right"></i>@model1.Category<span style="display:none;" id="span-@model1.Id"><i class="fa fa-refresh fa-spin" style="font-size:large;text-align:center;width:100%;" ></i></span></a></li>
+
+                }
+
+                <li><a asp-route-id="1"><i class="fa fa-angle-right"></i>Education Tips<span>16</span></a></li>
+                <li><a asp-route-id="2"><i class="fa fa-angle-right"></i>General Knowledge<span>30</span></a></li>
+                <li><a asp-route-id="3"><i class="fa fa-angle-right"></i>Tips for success<span>80</span></a></li>
+                <li><a asp-route-id="4"><i class="fa fa-angle-right"></i>Student Life<span>23</span></a></li>
+                <li><a asp-route-id="5"><i class="fa fa-angle-right"></i>Courses<span>28</span></a></li>
+            </ul>
+        </div>*@
+    <!--/ End Categories -->
+
+
+    <div class="single-widget course">
+        <h3>Event <span>List</span></h3>
+
+        @*<h3>Popular <span>Courses</span></h3>*@
+
+        @foreach (EventModel model1 in Model)
+        {
+        <!-- Single Course -->
+            <div class="single-course" style="vertical-align:bottom;">
+                <img src="http://via.placeholder.com/150x150" alt="#" />
+                <div class="course-content">
+                    <h4><a asp-route-id="@model1.Id" class="a-course">@model1.Category</a></h4>
+                    <div >@model1.DatePosted.Date.ToString("dd-MMM-yyyy") <span style="display:none;" id="span-@model1.Id"><i class="fa fa-refresh fa-spin" style="font-size:23px;"></i></span></div>
+
+
+                    @*<h4><a href="#">Web Design Course</a></h4>*@
+                    @*<div class="meta">$900.00, <span><i class="fa fa-clock-o"></i>3 Years</span></div>*@
+                </div>
+            </div>
+        <!-- Single Course -->
+        }
+
+        <div class="courses archives ">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Start Pagination -->
+                        <div class="pagination-main" style="float:left;">
+                            <ul class="pagination" style="margin:0;">
+                                <li class="prev"><a style="width:20px;padding:0;" href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                                <li><a href="#" style="width:20px;padding:0;" >1</a></li>
+                                <li class="active"><a href="#" style="width:20px;padding:0;" >2</a></li>
+                                <li><a href="#" style="width:20px;padding:0;" >3</a></li>
+                                <li class="next"><a href="#" style="width:20px;padding:0;" ><i class="fa fa-angle-double-right"></i></a></li>
+                            </ul>
+                        </div>
+                        <!--/ End Pagination -->
+                    </div>
+                </div>
+        </div>
+
+
+
+
+
+
+
+
+            @*<!-- Single Course -->
+            <div class="single-course">
+                <img src="http://via.placeholder.com/150x150" alt="#">
+                <div class="course-content">
+                    <h4><a href="#">Web Design Course</a></h4>
+                    <div class="meta">$900.00, <span><i class="fa fa-clock-o"></i>3 Years</span></div>
+                </div>
+            </div>
+            <!-- Single Course -->
+            <!-- Single Course -->
+            <div class="single-course">
+                <img src="http://via.placeholder.com/150x150" alt="#">
+                <div class="course-content">
+                    <h4><a href="#">Business Management Course</a></h4>
+                    <div class="meta">$150.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
+                </div>
+            </div>
+            <!-- Single Course -->
+            <!-- Single Course -->
+            <div class="single-course">
+                <img src="http://via.placeholder.com/150x150" alt="#">
+                <div class="course-content">
+                    <h4><a href="#">Software Engineer Course</a></h4>
+                    <div class="meta">$500.00, <span><i class="fa fa-clock-o"></i>6 Month</span></div>
+                </div>
+            </div>
+            <!-- Single Course -->
+            <!-- Single Course -->
+            <div class="single-course">
+                <img src="http://via.placeholder.com/150x150" alt="#">
+                <div class="course-content">
+                    <h4><a href="#">Master in website Development Course</a></h4>
+                    <div class="meta">$200.00, <span><i class="fa fa-clock-o"></i>1 Year</span></div>
+                </div>
+            </div>
+            <!-- Single Course -->
+            <!-- Single Course -->
+            <div class="single-course">
+                <img src="http://via.placeholder.com/150x150" alt="#">
+                <div class="course-content">
+                    <h4><a href="#">Zero to Hero Cources</a></h4>
+                    <div class="meta">$300.00, <span><i class="fa fa-clock-o"></i>2 Years</span></div>
+                </div>
+            </div>
+            <!-- Single Course -->*@
+
+
+</div>
+    @*<div class="single-widget tags">
+            <h3>Recent <span>Tags</span></h3>
+            <ul>
+                <li><a href="#">Course</a></li>
+                <li><a href="#">University</a></li>
+                <li><a href="#">Scholarship</a></li>
+                <li><a href="#">Free</a></li>
+                <li><a href="#">Standard</a></li>
+                <li><a href="#">Standard</a></li>
+            </ul>
+        </div>*@
+</div>

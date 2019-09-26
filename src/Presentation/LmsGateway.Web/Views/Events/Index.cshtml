@@ -1,0 +1,85 @@
+﻿@model IEnumerable<EventModel>
+
+@{
+    ViewData["Title"] = "event";
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            GetEvent(1);
+
+            $('.a-course').click(function (e) {
+                e.preventDefault();
+                GetEvent(this.href.split("/").pop());
+            })
+        });
+
+        function GetEvent(eventId) {
+            $("#span-" + eventId).show();
+
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetEvent", "Events")",
+                //url: "/Events/GetEvent",
+                dataType: 'html',
+                data: { id: eventId },
+                success: function (data) {
+                    $("#span-" + eventId).hide();
+                    $('#data').html(data);
+                },
+
+                error: function (request, status, error) {
+                    //isBusy(false);
+                    $("#span-" + eventId).hide();
+                    alert(error + " - Critical error occurred during message submission!");
+                }
+            })
+        }
+
+    </script>
+}
+
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Event</h2>
+                <ul class="bread-list">
+                    <li><a href="index.html">Home<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active"><a href="#">Events<i class="fa fa-angle-right"></i></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!-- Events -->
+<section class="events single section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-12">
+                @await Html.PartialAsync("_sideBar", Model)
+            </div>
+            <div class="col-lg-8 col-12">
+
+                <div id="data"></div>
+
+                @*<div id="data" style="display:none;"></div>*@
+               
+                @*<div style="font-size:100px;text-align:center;vertical-align:middle;height:460px;">
+                    <i class="fa fa-spin fa-refresh" style="vertical-align:middle;"></i>
+                </div>*@
+
+                @*@await Html.PartialAsync("_detail")*@
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+<!--/ End Events -->
