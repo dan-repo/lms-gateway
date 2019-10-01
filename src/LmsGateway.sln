@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LmsGateway.Web.Tests", "Tests\LmsGateway.Web.Tests\LmsGateway.Web.Tests.xproj", "{F53B6CED-BE2E-48F3-8E3D-99999B0BB172}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{63A39BC2-CEE5-49BC-BB7C-8E47D77C584F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63A39BC2-CEE5-49BC-BB7C-8E47D77C584F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63A39BC2-CEE5-49BC-BB7C-8E47D77C584F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F53B6CED-BE2E-48F3-8E3D-99999B0BB172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53B6CED-BE2E-48F3-8E3D-99999B0BB172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53B6CED-BE2E-48F3-8E3D-99999B0BB172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53B6CED-BE2E-48F3-8E3D-99999B0BB172}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,5 +89,6 @@ Global
 		{1CD3FC73-BB9B-43F5-9BA7-503B68B9F0F3} = {33D2C3F8-C1A2-4A92-9092-1CB6660962C7}
 		{F5AA44FC-631D-4F3D-9F19-B1F4146E5A4F} = {33D2C3F8-C1A2-4A92-9092-1CB6660962C7}
 		{63A39BC2-CEE5-49BC-BB7C-8E47D77C584F} = {77DCD8CC-22BF-4E9D-BE80-9F0C0769FC4E}
+		{F53B6CED-BE2E-48F3-8E3D-99999B0BB172} = {33D2C3F8-C1A2-4A92-9092-1CB6660962C7}
 	EndGlobalSection
 EndGlobal

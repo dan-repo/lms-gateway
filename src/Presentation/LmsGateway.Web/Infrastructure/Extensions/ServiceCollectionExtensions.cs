@@ -10,28 +10,29 @@ namespace LmsGateway.Web.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void RegisterCustomServices(this IServiceCollection services, string connectionString = null)
+        public static List<IDependencyRegistrar> Registrars { get; set; }
+
+        public static void RegisterCustomServices(this IServiceCollection services, IDictionary<string, string> connectionStrings = null)
         {
             // get type finder
             IServiceProvider serviceProvider = services.BuildServiceProvider();
             ITypeFinder typeFinder = serviceProvider.GetService<ITypeFinder>();
 
             //get registrars
-            List<TypeInfo> registrars = typeFinder.FindClassesOfType<IDependencyRegistrar>();
+            List<TypeInfo> registrarList = typeFinder.FindClassesOfType<IDependencyRegistrar>();
 
             // create registrar instance list
-            List<IDependencyRegistrar> registrarList = new List<IDependencyRegistrar>();
-            registrars.ForEach(dr => registrarList.Add(Activator.CreateInstance(dr.AsType()) as IDependencyRegistrar));
+            Registrars = new List<IDependencyRegistrar>();
+            registrarList.ForEach(dr => Registrars.Add(Activator.CreateInstance(dr.AsType()) as IDependencyRegistrar));
 
             //sort
-            registrarList = registrarList.OrderBy(x => x.Order).ToList();
+            Registrars = Registrars.OrderBy(x => x.Order).ToList();
 
             //register dependencies
-            registrarList.ForEach(dr => dr.Register(services, connectionString));
-
-            //IContainer container = containerBuilder.Build();
-            //Initialize(config, container);
+            Registrars.ForEach(dr => dr.Register(services, connectionStrings));
         }
+
+
 
 
     }

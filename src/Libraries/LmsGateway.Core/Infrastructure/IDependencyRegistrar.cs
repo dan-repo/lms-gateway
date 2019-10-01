@@ -10,7 +10,7 @@ namespace LmsGateway.Core.Infrastructure
     public interface IDependencyRegistrar
     {
         int Order { get; }
-        void Register(IServiceCollection service, string connectionString = null);
+        void Register(IServiceCollection service, IDictionary<string, string> connectionString = null);
 
     }
 }

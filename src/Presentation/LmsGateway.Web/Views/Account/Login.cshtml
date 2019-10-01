@@ -1,0 +1,86 @@
+﻿@model LoginModel
+@{ 
+    Layout = "_LogintLayout";
+}
+
+<section >
+    <div class="d-flex align-items-center" style="min-height: 100vh">
+        <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
+            <div class="text-center mt-5 mb-1">
+                <div class="avatar avatar-lg">
+                    <img src="~/images/logo-4.png" class="avatar-img rounded-circle" alt="ESUT LMS" />
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-5 navbar-light" >
+                <a href="student-dashboard.html" class="navbar-brand m-0">ESUT LMS</a>
+            </div>
+            <div class="card navbar-shadow  " >
+                <div class="card-header text-center">
+                    <h4 class="card-title">Login</h4>
+                    <p class="card-subtitle">Access your account</p>
+                </div>
+                <div class="card-body">
+
+                    @*<a href="student-dashboard.html" class="btn btn-light btn-block">
+                        <span class="fab fa-google mr-2"></span>
+
+                        <span class="fa fa-google mr-2"></span>
+                        Continue with Google
+                    </a>
+
+                    <div class="page-separator">
+                        <div class="page-separator__text">or</div>
+                    </div>*@
+
+                    @*<form action="student-dashboard.html" novalidate method="get">*@
+
+                        <form asp-action="Login" asp-controller="Account" method="post" asp-antiforgery="true">
+                            <input type="hidden" asp-for="ReturnUrl" />
+
+                            <div class="form-group">
+                                <label class="form-label" for="email">Your email address:</label>
+                                <div class="input-group input-group-merge">
+                                    @*<input id="email" type="email" required="" class="form-control form-control-prepended" placeholder="Your email address">*@
+
+                                    <input asp-for="Email" class="form-control form-control-prepended" placeholder="Your email address">
+                                    <div><span asp-validation-for="Email" class="text-danger"></span></div>
+
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span class="fa fa-envelope"></span>
+                                            @*<span class="far fa-envelope"></span>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="password">Your password:</label>
+                                <div class="input-group input-group-merge">
+                                    @*<input id="password" type="password" required="" class="form-control form-control-prepended" placeholder="Your password">*@
+
+                                    <input asp-for="Password" class="form-control form-control-prepended" placeholder="Your password">
+                                    <div><span asp-validation-for="Password" class="text-danger"></span></div>
+
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span class="fa fa-key"></span>
+                                            @*<span class="far fa-key"></span>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            </div>
+                            <div class="text-center">
+                                <a asp-action="ForgotPassword" asp-controller="Account" asp-area="" class="text-black-70" style="text-decoration: underline;">Forgot Password?</a>
+                            </div>
+                        </form>
+                </div>
+                <div class="card-footer text-center text-black-50">
+                    Not yet a student? <a asp-action="Signup" asp-controller="Account" asp-area="" >Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

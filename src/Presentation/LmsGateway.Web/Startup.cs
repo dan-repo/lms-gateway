@@ -35,10 +35,16 @@ namespace LmsGateway.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            IDictionary<string, string> connectionStrings = new Dictionary<string, string>()
+            {
+                ["Identity"] = Configuration["Identity:ConnectionString"],
+                ["Data"] = Configuration["Data:ConnectionString"]
+            };
+
             // Add application services.
             services.AddTransient<ITypeFinder, AppTypeFinder>();
-            services.RegisterCustomServices(Configuration["Data:ConnectionString"]);
-
+            services.RegisterCustomServices(connectionStrings);
+            
             if (!_env.IsDevelopment())
             {
                 services.Configure<MvcOptions>(options =>
@@ -71,6 +77,11 @@ namespace LmsGateway.Web
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                   name: "areaRoute",
+                   template: "{area:exists}/{controller}/{action}/{id?}",
+                   defaults: new { controller = "Dashboard", action = "Index" });
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
