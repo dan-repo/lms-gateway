@@ -40,3 +40,8 @@
     background: #ce4d1c;
   }
 }
+
+.breadcrumbs {
+	/*background: url('http://via.placeholder.com/2000x500');*/
+    background: url('/images/child-page.jpg');
+}

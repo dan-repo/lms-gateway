@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using LmsGateway.Core.Extensions;
 
 namespace LmsGateway.Core.Infrastructure
 {
@@ -26,11 +24,13 @@ namespace LmsGateway.Core.Infrastructure
         }
 
         //[DebuggerStepThrough]
-        //public static void NotEmpty(string arg, string argName)
-        //{
-        //    if (arg.IsEmpty())
-        //        throw Error.Argument(argName, "String parameter '{0}' cannot be null or all whitespace.", argName);
-        //}
+        public static void NotEmpty(string arg, string argName)
+        {
+            if (arg.IsEmpty())
+                throw new ArgumentNullException(arg, $"String parameter '{argName}' cannot be null or all whitespace.");
+
+            //throw Error.Argument(argName, "String parameter '{0}' cannot be null or all whitespace.", argName);
+        }
 
         //[DebuggerStepThrough]
         //public static void NotEmpty<T>(ICollection<T> arg, string argName)
@@ -92,11 +92,13 @@ namespace LmsGateway.Core.Infrastructure
         //}
 
         //[DebuggerStepThrough]
-        //public static void IsPositive<T>(T arg, string argName, string message = IsPositiveMessage) where T : struct, IComparable<T>
-        //{
-        //    if (arg.CompareTo(default(T)) < 1)
-        //        throw Error.ArgumentOutOfRange(argName, message.FormatInvariant(argName));
-        //}
+        public static void IsPositive<T>(T arg, string argName, string message = IsPositiveMessage) where T : struct, IComparable<T>
+        {
+            if (arg.CompareTo(default(T)) < 1)
+                throw new ArgumentOutOfRangeException(argName, message);
+
+            //throw Error.ArgumentOutOfRange(argName, message.FormatInvariant(argName));
+        }
 
         //[DebuggerStepThrough]
         //public static void IsTrue(bool arg, string argName, string message = IsTrueMessage)

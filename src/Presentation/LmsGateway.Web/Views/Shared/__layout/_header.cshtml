@@ -2,18 +2,16 @@
 <header class="header">
     <!-- Topbar #853111 -->
     <div class="topbar" style="background:#fff; color:#000;border-bottom:solid 1px #e4e3e3;">
-
-        @*<div class="topbar" style="background:#853111; border-bottom:solid 1px #e4e3e3;">*@
-        @*<div class="topbar" style="background:#96524D; border-bottom:solid 1px #e4e3e3;">*@
         @*<div class="topbar">*@
         <div class="container">
+           
             <div class="row">
                 <div class="col-lg-8 col-12">
                     <!-- Contact -->
                     <ul class="content">
-                        <li><i class="fa fa-phone"></i>123-456-789</li>
-                        <li><a href="mailto:info@yourdomain.com"><i class="fa fa-envelope-o"></i>contact@yourdomain.com</a></li>
-                        <li><i class="fa fa-clock-o"></i>Opening: 10:00am - 5:00pm</li>
+                        @*<li><i class="fa fa-phone"></i>123-456-789</li>*@
+                        <li><a href="mailto:info@esutlms.com"><i class="fa fa-envelope-o"></i>info@esutlms.com</a></li>
+                        @*<li><i class="fa fa-clock-o"></i>Opening: 10:00am - 5:00pm</li>*@
                     </ul>
                     <!-- End Contact -->
                 </div>
@@ -23,10 +21,11 @@
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus "></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        @*<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>*@
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li> 
+                        <li style="border-left:solid 1px #e4e3e3;padding-left:15px;"><a href="#" style="color:#853111"><i class="fa fa-power-off"></i> Login</a></li>
                     </ul>
                     <!-- End Social -->
                 </div>
@@ -79,9 +78,9 @@
                                 <li id="lnkIndex">
                                     <a asp-action="Index" asp-controller="Home" asp-area="">Home</a>
                                 </li>
-                                <li id="lnkCourses">
+                                @*<li id="lnkCourses">
                                     <a asp-action="Index" asp-controller="Courses" asp-area="">Courses</a>
-                                </li>
+                                </li>*@
                                 <li id="lnkEvents">
                                     <a asp-action="Index" asp-controller="Events" asp-area="">Events</a>
                                 </li>
@@ -95,7 +94,8 @@
                             <!-- End Main Menu -->
                             <!-- button -->
                             <div class="button">
-                                <a href="contact.html" class="btn"><i class="fa fa-pencil"></i>Apply Now</a>
+                                @*<a asp-action="Login" asp-controller="Account" asp-area="" class="btn"><i class="fa fa-power-off"></i>Login</a>*@
+                                <a asp-action="Signup" asp-controller="Account" asp-area="" class="btn"><i class="fa fa-pencil"></i>Apply Now</a>
                             </div>
                             <!--/ End Button -->
                         </div>

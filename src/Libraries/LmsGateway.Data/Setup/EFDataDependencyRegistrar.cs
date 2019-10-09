@@ -13,7 +13,7 @@ namespace LmsGateway.Data.Setup
 {
     public class EFDataDependencyRegistrar : IDependencyRegistrar
     {
-        public int Order => 2;
+        public int Order => 0;
 
         public void Register(IServiceCollection services, IDictionary<string, string> connectionStrings = null)
         {

@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using LmsGateway.Core.Infrastructure;
 using LmsGateway.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using LmsGateway.Core.Notifications;
+using LmsGateway.Services.Notifications;
 
 namespace LmsGateway.Web
 {
@@ -35,6 +37,8 @@ namespace LmsGateway.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            EmailServer emailServer = GetEmailServer();
+            
             IDictionary<string, string> connectionStrings = new Dictionary<string, string>()
             {
                 ["Identity"] = Configuration["Identity:ConnectionString"],
@@ -44,7 +48,9 @@ namespace LmsGateway.Web
             // Add application services.
             services.AddTransient<ITypeFinder, AppTypeFinder>();
             services.RegisterCustomServices(connectionStrings);
-            
+            services.Add(new ServiceDescriptor(typeof(EmailServer), emailServer));
+            services.AddTransient<IEmailService, EmailService>();
+
             if (!_env.IsDevelopment())
             {
                 services.Configure<MvcOptions>(options =>
@@ -52,6 +58,19 @@ namespace LmsGateway.Web
                     options.Filters.Add(new RequireHttpsAttribute());
                 });
             }
+
+
+            //// Only allow authenticated users.
+            //var defaultPolicy = new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
+            //    .RequireAuthenticatedUser()
+            //    .Build();
+
+            //// Add MVC services to the services container.
+            //services.AddMvc(setup =>
+            //{
+            //    setup.Filters.Add(new Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter(defaultPolicy));
+            //});
+
 
             // Add framework services.
             services.AddMvc();
@@ -74,6 +93,7 @@ namespace LmsGateway.Web
             }
 
             app.UseStaticFiles();
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {
@@ -86,6 +106,18 @@ namespace LmsGateway.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private EmailServer GetEmailServer()
+        {
+            string name = Configuration["EmailServer:Name"];
+            string host = Configuration["EmailServer:Host"];
+            string username = Configuration["EmailServer:Username"];
+            string password = Configuration["EmailServer:Password"];
+            int port = Convert.ToInt32(Configuration["EmailServer:Port"]);
+            bool useSsl = Convert.ToBoolean(Configuration["EmailServer:UseSsl"]);
+
+            return new EmailServer(name, username, password, host, port, useSsl);
         }
 
 

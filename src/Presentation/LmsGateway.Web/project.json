@@ -26,7 +26,8 @@
     "LmsGateway.Domain": "1.0.0-*",
     "LmsGateway.Data": "1.0.0-*",
     "Microsoft.AspNetCore.Identity": "1.0.0",
-    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0"
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
+    "LmsGateway.Services": "1.0.0-*"
   },
 
   "tools": {

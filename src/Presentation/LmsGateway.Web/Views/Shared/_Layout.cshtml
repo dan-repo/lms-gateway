@@ -49,13 +49,13 @@
 </head>
 <body>
 
-    @await Html.PartialAsync("_partials/_preloader")
+    @await Html.PartialAsync("__layout/_preloader")
 
-    @await Html.PartialAsync("_partials/_mailLayoutHeader")
+    @await Html.PartialAsync("__layout/_header")
 
     <div>@RenderBody()</div>
 
-    @await Html.PartialAsync("_partials/_mailLayoutFooter")
+    @await Html.PartialAsync("__layout/_footer")
 
 
     @*<!-- Jquery JS-->

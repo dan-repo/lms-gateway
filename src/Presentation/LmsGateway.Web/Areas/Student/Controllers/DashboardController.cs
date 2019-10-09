@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LmsGateway.Web.Areas.Student.Controllers
 {
+    [Authorize]
     [Area("Student")]
     public class DashboardController : Controller
     {
@@ -15,7 +17,7 @@ namespace LmsGateway.Web.Areas.Student.Controllers
 
         }
         
-        public async Task<IActionResult> Index() => await Task.FromResult(View());
+        public async Task<IActionResult> Index(string id = null) => await Task.FromResult(View());
 
     }
 

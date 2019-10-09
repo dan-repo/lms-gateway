@@ -1,7 +1,88 @@
 ﻿ <!-- Footer -->
 <footer class="footer overlay section">
-    <!-- Footer Top -->
     <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- About -->
+                    <div class="single-widget about">
+                        <div class="logo"><a asp-action="Index" asp-controller="Home" asp-area=""><img src="~/images/logo-4.png" alt="#"></a></div>
+                        <p>ESUT Learning Management System (ESUT LMS)</p>
+                        <ul class="list">
+                            <li><i class="fa fa-phone"></i>Phone: +123 456-7890 </li>
+                            <li><i class="fa fa-envelope"></i>Email: <a href="mailto:info@esutlms.com">Info@esutlms.com</a></li>
+                            <li><i class="fa fa-map-o"></i>Address: 211 Ronad, California, Us</li>
+                        </ul>
+                    </div>
+                    <!--/ End About -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Useful Links -->
+                    <div class="single-widget useful-links">
+                        <h2>Useful Links</h2>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Home</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>About Us</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Courses</a></li>
+                            @*<li><a href="#"><i class="fa fa-angle-right"></i>Events</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Blogs</a></li>*@
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Contact</a></li>
+                        </ul>
+                    </div>
+                    <!--/ End Useful Links -->
+                </div>
+
+                @*<div class="col-lg-4 col-md-6 col-12">
+                    <!-- Latest News -->
+                    <div class="single-widget latest-news">
+                        <h2>Latest Posts</h2>
+                        <div class="news-inner">
+                            <div class="single-news">
+                                <img src="http://via.placeholder.com/150x150" alt="#">
+                                <h4><a href="blog-single.html">Our Teacher the best Link to Savc</a></h4>
+                                <p>Nunc purus orci, blandit condimentum rhoncus vels</p>
+                            </div>
+                            <div class="single-news">
+                                <img src="http://via.placeholder.com/150x150" alt="#">
+                                <h4><a href="blog-single.html">Student Have the best Link to Ronae</a></h4>
+                                <p>Nunc purus orci, blandit condimentum rhoncus vels</p>
+                            </div>
+                            <div class="single-news">
+                                <img src="http://via.placeholder.com/150x150" alt="#">
+                                <h4><a href="blog-single.html">Sekker the best Link to build</a></h4>
+                                <p>Nunc purus orci, blandit condimentum rhoncus vele</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ End Latest News -->
+                </div>*@
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Newsletter -->
+                    <div class="single-widget newsletter">
+                        <h2>Subscribe Newsletter</h2>
+                        <div class="mail">
+                            <p>Don't miss to  subscribe to our news feed, Get the latest updates from us!</p>
+                            <div class="form">
+                                <input type="email" placeholder="Enter your email">
+                                <button class="button" type="submit"><i class="fa fa-envelope"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ End Newsletter -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Footer Top -->
+
+
+
+
+
+
+    <!-- Footer Top -->
+    @*<div class="footer-top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-12">
@@ -32,6 +113,7 @@
                     </div>
                     <!--/ End Useful Links -->
                 </div>
+
                 <div class="col-lg-4 col-md-6 col-12">
                     <!-- Latest News -->
                     <div class="single-widget latest-news">
@@ -56,6 +138,7 @@
                     </div>
                     <!--/ End Latest News -->
                 </div>
+
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Newsletter -->
                     <div class="single-widget newsletter">
@@ -73,7 +156,7 @@
             </div>
         </div>
     </div>
-    <!--/ End Footer Top -->
+    <!--/ End Footer Top -->*@
     <!-- Footer Bottom -->
     <div class="footer-bottom">
         <div class="container">
@@ -93,7 +176,7 @@
                                 <!-- End Social -->
                                 <!-- Copyright -->
                                 <div class="copyright">
-                                    <p>© Copyright 2018 - @DateTime.Now.Year <a href="#">ESUT LMS</a>. All Rights Reserved</p>
+                                    <p>© Copyright @DateTime.Now.Year <a href="#">ESUT LMS</a>. All Rights Reserved</p>
                                 </div>
                                 <!--/ End Copyright -->
                             </div>
