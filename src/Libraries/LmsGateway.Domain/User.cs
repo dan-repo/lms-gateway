@@ -10,6 +10,10 @@ namespace LmsGateway.Domain
     public class User : IdentityUser
     {
         public string Name { get; set; }
+        public UserType Type { get; set; }
+        public bool Verified { get; set; }
 
     }
+
+
 }

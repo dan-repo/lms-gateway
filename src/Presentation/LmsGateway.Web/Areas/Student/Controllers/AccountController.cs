@@ -27,6 +27,48 @@ namespace LmsGateway.Web.Areas.Student.Controllers
 
         public async Task<IActionResult> Subscription() => await Task.FromResult(View());
 
+        public async Task<IActionResult> SubscriptionDetail(string view = null)
+        {
+            PartialViewResult partialView = null;
+
+            switch (view)
+            {
+                case "subscription":
+                    {
+                        partialView = await Task.FromResult(PartialView("_account/_subscription"));
+                        break;
+                    }
+                case "upgrade":
+                    {
+                        partialView = await Task.FromResult(PartialView("_account/_upgrade"));
+                        break;
+                    }
+                case "payment":
+                    {
+                        partialView = await Task.FromResult(PartialView("_account/_paymentInfo"));
+                        break;
+                    }
+                case "pay-history":
+                    {
+                        partialView = await Task.FromResult(PartialView("_account/_billing"));
+                        break;
+                    }
+                case "invoice":
+                    {
+                        partialView = await Task.FromResult(PartialView("_account/_invoice"));
+                        break;
+                    }
+                default:
+                    {
+                        partialView = await Task.FromResult(PartialView("_account/_subscription"));
+                        break;
+                    }
+            }
+
+            return partialView;
+
+        }
+
         public async Task<IActionResult> Profile() => await Task.FromResult(View());
 
         public async Task<IActionResult> SignOut()
@@ -36,7 +78,9 @@ namespace LmsGateway.Web.Areas.Student.Controllers
                 await _signInManager.SignOutAsync();
             }
 
-            return RedirectToAction(nameof(Index), "Home", new { area = "" });
+            return RedirectToAction("Login", "Account", new { area = "" });
+
+            //return RedirectToAction(nameof(Index), "Home", new { area = "" });
         }
 
 

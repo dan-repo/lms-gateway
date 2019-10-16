@@ -27,7 +27,14 @@
     "LmsGateway.Data": "1.0.0-*",
     "Microsoft.AspNetCore.Identity": "1.0.0",
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
-    "LmsGateway.Services": "1.0.0-*"
+    "LmsGateway.Services": "1.0.0-*",
+    "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.1",
+    "Microsoft.AspNetCore.Mvc.Core": "1.0.1",
+    "Microsoft.AspNetCore.Mvc.Abstractions": "1.0.1",
+    "Microsoft.AspNetCore.Session": "1.0.0",
+    "Microsoft.Extensions.Caching.Memory": "1.1.1",
+    "Microsoft.AspNetCore.Http.Extensions": "1.0.0",
+    "LmsGateway.Web.Framework": "1.0.0-*"
   },
 
   "tools": {
@@ -62,6 +69,7 @@
       "wwwroot",
       "**/*.cshtml",
       "appsettings.json",
+      "appsettings.production.json",
       "web.config"
     ]
   },

@@ -44,7 +44,21 @@ namespace LmsGateway.Web.Tests
             Assert.NotNull(dataContext);
            
         }
-        
+
+        [Fact]
+        public void CanGegistrars()
+        {
+            HostingEnvironment env = new HostingEnvironment();
+            env.ContentRootPath = Directory.GetCurrentDirectory();
+            env.EnvironmentName = "Production";
+
+            Startup startup = new Startup(env);
+            ServiceCollection sc = new ServiceCollection();
+            startup.ConfigureServices(sc);
+            
+
+        }
+
         //private IServiceCollection ServiceProviderFactory()
         //{
         //    HostingEnvironment env = new HostingEnvironment();

@@ -28,11 +28,11 @@ namespace LmsGateway.Data.Mappings
             entityBuilder.Property(u => u.SecurityStamp).HasColumnName("Security_Stamp");
             entityBuilder.Property(u => u.TwoFactorEnabled).HasColumnName("Two_Factor_Enabled");
             entityBuilder.Property(u => u.UserName).HasColumnName("Username");
-            
+
+            entityBuilder.Property(u => u.Type).HasColumnName("User_Type");
+
         }
-
-
-
+        
 
 
     }

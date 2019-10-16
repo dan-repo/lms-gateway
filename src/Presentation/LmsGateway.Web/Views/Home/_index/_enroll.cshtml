@@ -1,4 +1,5 @@
-﻿<!-- Enroll -->
+﻿
+<!-- Enroll -->
 <section class="enroll overlay section" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row">
@@ -11,8 +12,49 @@
                                 <h2>Enroll Today</h2>
                                 <p>Before you miss the chance to get your seat!</p>
                             </div>
+
+
+                            @await Component.InvokeAsync(nameof(SignupForm))
+
+
+
+
+
+
+
+
+                            @*<form class="form" action="#">
+                                <div class="form-group">
+                                    <label>Enter Your name</label>
+                                    <input name="name" type="text" placeholder="Enter your name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter Your Email</label>
+                                    <input name="email" type="email" placeholder="Enter valid email"/>
+                                </div>
+                                <div class="form-group">
+                                    <input name="password" type="password" placeholder="Choose a password"/>
+                                </div>
+                                <div class="form-group">
+                                    <input name="password" type="password" placeholder="Re-enter your password" />
+                                </div>
+                                <div>
+
+                                    <input type="checkbox" />
+
+                                    <label >
+                                        I agree to the
+                                        <a href="#" class="text-black-70" style="text-decoration: underline;">Terms of Use</a>
+                                    </label>
+                                </div>
+                                <div class="form-group button">
+                                    <button type="submit" class="btn">Register Now</button>
+                                </div>
+                            </form>*@
+
+
                             <!-- Form -->
-                            <form class="form" action="#">
+                            @*<form class="form" action="#">
                                 <div class="form-group">
                                     <label>Enter Your name</label>
                                     <input name="name" type="text" placeholder="John Mathew">
@@ -28,8 +70,10 @@
                                 <div class="form-group button">
                                     <button type="submit" class="btn">Register Now</button>
                                 </div>
-                            </form>
+                            </form>*@
                             <!--/ End Form -->
+
+
                         </div>
                         <!-- Single Enroll -->
                     </div>
@@ -39,7 +83,9 @@
                                 @*<h2>We Have More than 28,690+ Student With online Join!</h2>*@
 
                                 <h2>We have unlimited courses online. Join!</h2>
-                                <p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis.</p>
+                                <p>Make your choice after signup.</p>
+                                
+                                @*<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis.</p>*@
                             </div>
                         </div>
                         <!-- Skill Main -->

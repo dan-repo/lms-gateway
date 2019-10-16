@@ -23,8 +23,12 @@ namespace LmsGateway.Services.Notifications
             MimeMessage message = new MimeMessage();
             message.From.Add(new MailboxAddress(email.FromEmailAddress.Name, email.FromEmailAddress.Email));
             message.To.Add(new MailboxAddress(email.ToEmailAddress.Name, email.ToEmailAddress.Email));
-            message.Body = new TextPart { Text = email.Message };
-            message.Subject = email.Subject;
+            message.Body = new TextPart("html") { Text = email.Message }; //plain, html, enriched, rtf, and xml
+
+            if (email.Subject != null)
+            {
+                message.Subject = email?.Subject;
+            }
 
             try
             {

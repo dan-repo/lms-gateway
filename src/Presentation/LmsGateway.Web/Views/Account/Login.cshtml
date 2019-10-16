@@ -1,28 +1,42 @@
 ﻿@model LoginModel
 @{ 
     Layout = "_LogintLayout";
+    ViewData["Title"] = "login";
 }
 
 <section >
     <div class="d-flex align-items-center" style="min-height: 100vh">
         <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
+
+
             <div class="text-center mt-5 mb-1">
+                <div class="avatar avatar-lg">
+                    <a asp-action="Index" asp-controller="Home" asp-area=""><img src="~/images/logo-4.png" class="avatar-img rounded-circle" alt="ESUT LMS" /></a>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-5 navbar-light">
+                <a asp-action="Index" asp-controller="Home" asp-area="" class="navbar-brand m-0">ESUT LMS</a>
+            </div>
+
+
+            @*<div class="text-center mt-5 mb-1">
                 <div class="avatar avatar-lg">
                     <img src="~/images/logo-4.png" class="avatar-img rounded-circle" alt="ESUT LMS" />
                 </div>
             </div>
             <div class="d-flex justify-content-center mb-5 navbar-light" >
                 <a href="student-dashboard.html" class="navbar-brand m-0">ESUT LMS</a>
-            </div>
+            </div>*@
             <div class="card navbar-shadow  " >
                 <div class="card-header text-center">
                     <h4 class="card-title">Login</h4>
                     <p class="card-subtitle">Access your account</p>
 
-                    @if (ViewBag.Message != null)
+                    @if (TempData["Message"] != null)
                     {
-                        <p>@ViewBag.Message</p>
+                        <h4 class="text-success">@TempData["Message"]</h4>
                     }
+                    
                 </div>
                 <div class="card-body">
 

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using LmsGateway.Data;
+using LmsGateway.Domain;
 
 namespace LmsGateway.Data.Migrations.EFIdentity
 {
@@ -65,9 +66,14 @@ namespace LmsGateway.Data.Migrations.EFIdentity
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnName("Two_Factor_Enabled");
 
+                    b.Property<int>("Type")
+                        .HasColumnName("User_Type");
+
                     b.Property<string>("UserName")
                         .HasColumnName("Username")
                         .HasMaxLength(256);
+
+                    b.Property<bool>("Verified");
 
                     b.HasKey("Id");
 

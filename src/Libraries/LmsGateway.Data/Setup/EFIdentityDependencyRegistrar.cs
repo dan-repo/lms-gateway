@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using LmsGateway.Core.Infrastructure;
+using System.Data.SqlClient;
 
 namespace LmsGateway.Data.Setup
 {
@@ -19,6 +20,15 @@ namespace LmsGateway.Data.Setup
         {
             string connectionString = connectionStrings["Identity"];
 
+            //var constr = new SqlConnectionStringBuilder();
+            //constr.DataSource = ".";
+            //constr.MultipleActiveResultSets = true;
+            //constr.Password = "P@55w0rd";
+            //constr.UserID = "sa";
+            //constr.InitialCatalog = "LmsIdty";
+            //constr.MinPoolSize = 1;
+            //constr.MaxPoolSize = 100;
+            
             services.AddDbContext<EFIdentityContext>(o => o.UseSqlServer(connectionString));
 
             services.AddIdentity<User, IdentityRole>(o =>

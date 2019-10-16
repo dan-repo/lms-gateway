@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LmsGateway.Web.Models
 {
-    public class UserModel : UrlModel
+    public class ContactFormModel
     {
         [Required]
         public string Name { get; set; }
@@ -15,20 +15,13 @@ namespace LmsGateway.Web.Models
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "Email is not valid")]
         public string Email { get; set; }
 
-        [Required]
-        [UIHint("password")]
-        public string Password { get; set; }
+        //[Required]
+        //public string Website { get; set; }
 
         [Required]
-        [UIHint("password")]
-        [Display(Name="Confirm Password")]
-        [Compare("Password", ErrorMessage = "Password and it's confirmation did not match!")]
-        public string ConfirmPassword { get; set; }
+        public string Comment { get; set; }
 
-        public string Username { get; set; }
 
-        [Required]
-        public bool IAgree { get; set; }
 
     }
 }

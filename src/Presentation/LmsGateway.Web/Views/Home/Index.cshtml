@@ -2,6 +2,80 @@
     ViewData["Title"] = "home";
 }
 
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            //alert("sign-uo form just loaded");
+
+            $("#btnSubmit").click(function () {
+                if (!$("#frmSignup").valid()) {
+                    return;
+                }
+
+                isBusy(true);
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("SignupForm", "Account")",
+                    dataType: 'json',
+                    data: $("#frmSignup").serialize(),
+
+                    success: function (result) {
+                        isBusy(false);
+
+                        //clearSignupForm();
+                        
+                        if (result == "ok") {
+                            clearSignupForm();
+
+                            //$("#divMessage").show();
+
+                            window.location.href = "@Url.Action("SignedUp", "Account")";
+                        } else {
+                            alert(result);
+                        }
+                    },
+
+                    error: function (request, status, error) {
+                        isBusy(false);
+
+                        alert(error + " - Critical error occurred!");
+                    }
+                });
+
+            })
+
+        })
+
+        function clearSignupForm() {
+            $("#Name").val("");
+            $("#Email").val("");
+            $("#Type").prop("selectedIndex", 0);
+            $("#Password").val("");
+            $("#ConfirmPassword").val("");
+            $("#IAgree").prop('checked', false);
+        }
+
+        function isBusy(busy) {
+            if (busy) {
+                $("#isBusy").show();
+                $("#spSubmit").hide();
+            } else {
+                $("#isBusy").hide();
+                $("#spSubmit").show();
+            }
+        }
+
+
+    </script>
+}
+
+
+
+
+
+@*@await Html.PartialAsync("/Plugins/LmsGateway.Paystack/Views/paystack/configure.cshtml")*@
+
 <!-- main slider -->
 @await Html.PartialAsync("_index/_slider")
 

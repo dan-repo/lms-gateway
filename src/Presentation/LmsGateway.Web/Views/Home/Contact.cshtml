@@ -1,6 +1,60 @@
-﻿@{
+﻿@model ContactFormModel
+@{
     ViewData["Title"] = "contact";
 }
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#btnPost").click(function (evt) {
+                if (!$("#frmContact").valid()) {
+                    return;
+                }
+
+                isBusy(true);
+
+                $.ajax({
+                    type: "POST",
+                    dataType: 'json',
+                    url: "@Url.Action("SubmitEnquiry", "Home")",
+                    data: $("#frmContact").serialize(),
+
+                    success: function (message) {
+                        isBusy(false);
+                        
+                        $("#Name").val("");
+                        $("#Email").val("");
+                        $("#Comment").val("");
+
+                        alert(message);
+                    },
+
+                    error: function (request, status, error) {
+                        isBusy(false);
+
+                        alert(error + " - Critical error occurred!");
+                    }
+                })
+            })
+
+            function isBusy(busy) {
+                if (busy) {
+                    $("#isBusy").show();
+                    $("#spSubmit").hide();
+                } else {
+                    $("#isBusy").hide();
+                    $("#spSubmit").show();
+                }
+            }
+
+
+
+        })
+    </script>
+}
+
+
+
 
 <!-- Start Breadcrumbs -->
 <section class="breadcrumbs overlay">
@@ -38,15 +92,15 @@
                     <div class="contact-info">
                         <div class="icon"><i class="fa fa-map"></i></div>
                         <h3>Location</h3>
-                        <p>60 Grant Ave. Central New Road 0708, UK 9766 Tanner</p>
+                        <p>PMB 01660. Agbani, Enugu State, Nigeria</p>
                     </div>
 
                     <!-- Contact-Info -->
                     <div class="contact-info">
                         <div class="icon"><i class="fa fa-envelope"></i></div>
                         <h3>Email Address</h3>
-                        <a href="mailto:information@gmail.com">information@yourwebsite.com</a>
-                        <a href="mailto:admission@myuniversity.com">admission@yourwebsite.com</a>
+                        <a href="mailto:info@esutlms.com">info@esutlms.com</a>
+                        @*<a href="mailto:admission@myuniversity.com">admission@yourwebsite.com</a>*@
                     </div>
 
                     <!-- Contact-Info -->
@@ -54,7 +108,7 @@
                         <div class="icon"><i class="fa fa-phone"></i></div>
                         <h3>Get in Touch</h3>
                         <p>+ (234) 853 232 455669</p>
-                        <p>+ (533) 232 423 455600</p>
+                        @*<p>+ (533) 232 423 455600</p>*@
                     </div>
 
                     @*<div class="contact-map">
@@ -67,23 +121,34 @@
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="form-head">
                         <!-- Form -->
-                        <form class="form" action="mail/mail.php">
+                        <form id="frmContact" asp-action="SubmitEnquiry" asp-controller="Home" asp-antiforgery="true" class="form" >
                             <div class="form-group">
-                                <input name="name" type="text" placeholder="Enter Name">
+                                <input asp-for="Name" placeholder="Enter Name">
+                                <div><span asp-validation-for="Name" class="text-danger"></span></div>
                             </div>
+                            
                             <div class="form-group">
-                                <input name="email" type="email" placeholder="Email Address">
+                                <input asp-for="Email" placeholder="Email Address">
+                                <div><span asp-validation-for="Email" class="text-danger"></span></div>
                             </div>
-                            <div class="form-group">
+
+                            @*<div class="form-group">
                                 <input name="subject" type="text" placeholder="Website">
-                            </div>
+                            </div>*@
+
                             <div class="form-group">
-                                <textarea name="message" placeholder="Comment"></textarea>
+                                <textarea asp-for="Comment" placeholder="Comment"></textarea>
+                                <div><span asp-validation-for="Comment" class="text-danger"></span></div>
                             </div>
+
                             <div class="form-group">
                                 <div class="button">
                                     @*<button type="submit" class="btn primary">Post Comment</button>*@
-                                    <button type="submit" class="btn primary">Post</button>
+                                    <button id="btnPost" type="button" class="btn primary">
+                                        
+                                        <span id="spSubmit">Post</span>
+                                        <span id="isBusy" style="display:none"><i class="fa fa-refresh fa-spin"></i>&nbsp;Posting ...</span>
+                                    </button>
                                 </div>
                             </div>
                         </form>

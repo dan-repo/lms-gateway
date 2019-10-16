@@ -23,6 +23,8 @@
     "outputFileName": "wwwroot/js/bundled.js",
     "inputFiles": [
       "wwwroot/js/jquery.min.js",
+      "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "wwwroot/js/jquery-migrate.min.js",
       "wwwroot/js/popper.min.js",
       "wwwroot/js/bootstrap.min.js",
@@ -41,6 +43,12 @@
       "wwwroot/js/jquery.scrollUp.min.js",
       "wwwroot/js/main.js",
       "wwwroot/js/main-menu.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/admin/app.min.css",
+    "inputFiles": [
+      "wwwroot/css/admin/app.css"
     ]
   }
 ]

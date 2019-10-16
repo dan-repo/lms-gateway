@@ -2,31 +2,106 @@
 
 }
 
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var subscriptionAnchor = $("#subscription");
+            var ugradeAnchor = $("#ug-account");
+            var billingAnchor = $("#billing");
+            var payHistoryAnchor = $("#pay-history");
+            var invoiceAnchor = $("#ancInvoice");
+
+            GetView(null);
+
+            subscriptionAnchor.click(function () {
+                GetView("subscription");
+                UpdateLinkState(invoiceAnchor, payHistoryAnchor, billingAnchor, ugradeAnchor, subscriptionAnchor);
+            });
+
+            ugradeAnchor.click(function (e) {
+                GetView("upgrade");
+                UpdateLinkState(subscriptionAnchor, invoiceAnchor, payHistoryAnchor, billingAnchor, ugradeAnchor);
+            });
+
+            billingAnchor.click(function () {
+                GetView("payment");
+                UpdateLinkState(subscriptionAnchor, ugradeAnchor, invoiceAnchor, payHistoryAnchor, billingAnchor);
+            });
+
+            payHistoryAnchor.click(function (e) {
+                GetView("pay-history");
+                UpdateLinkState(subscriptionAnchor, ugradeAnchor, billingAnchor, invoiceAnchor, payHistoryAnchor);
+            });
+
+            invoiceAnchor.click(function (e) {
+                GetView("invoice");
+                UpdateLinkState(subscriptionAnchor, ugradeAnchor, billingAnchor, payHistoryAnchor, invoiceAnchor);
+            });
+
+        });
+
+        function UpdateLinkState(anchor1, anchor2, anchor3, anchor4, anchor5) {
+            var activeClass = "active";
+
+            anchor1.removeClass(activeClass);
+            anchor2.removeClass(activeClass);
+            anchor3.removeClass(activeClass);
+            anchor4.removeClass(activeClass);
+            anchor5.removeClass(activeClass);
+            anchor5.addClass(activeClass);
+        }
+
+        function GetView(view)
+        {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("SubscriptionDetail", "Account", new { area = "Student" })",
+                //dataType: 'html',
+                data: { view: view },
+
+                success: function (result) {
+                    $('#divView').html(result);
+                },
+
+                error: function (request, status, error) {
+                    alert(error + " - Critical error occurred!");
+                }
+            });
+        }
+    </script>
+}
+
 <div class="page ">
 
     <div class="container page__container p-0">
         <div class="row m-0">
+
+            <div id="divView" class="col-lg-9">
+
+            </div>
             
-            @await Html.PartialAsync("_account/_subscription")
+            @*@await Html.PartialAsync("_account/_subscription")*@
             
             <div id="page-nav" class="col-lg-auto page-nav">
                 <div data-perfect-scrollbar>
                     <div class="page-section pt-lg-32pt">
                         <ul class="nav page-nav__menu">
                             <li class="nav-item">
-                                <a href="fixed-student-account-billing-subscription.html" class="nav-link active">Subscription</a>
+                                @*<a id="subscription" href="#" class="nav-link">Subscription</a>*@
+
+                                <a id="subscription" href="#" class="nav-link active">Subscription</a>
                             </li>
                             <li class="nav-item">
-                                <a href="fixed-student-account-billing-upgrade.html" class="nav-link">Upgrade Account</a>
+                                <a id="ug-account" href="#" class="nav-link">Upgrade Account</a>
                             </li>
                             <li class="nav-item">
-                                <a href="fixed-student-account-billing-payment-information.html" class="nav-link">Payment Information</a>
+                                <a id="billing" href="#" class="nav-link">Payment Information</a>
                             </li>
                             <li class="nav-item">
-                                <a href="fixed-student-billing.html" class="nav-link">Payment History</a>
+                                <a id="pay-history" href="#" class="nav-link">Payment History</a>
                             </li>
                             <li class="nav-item">
-                                <a href="fixed-student-invoice.html" class="nav-link">Invoice</a>
+                                <a id="ancInvoice" href="#" class="nav-link">Invoice</a>
                             </li>
                         </ul>
                     </div>

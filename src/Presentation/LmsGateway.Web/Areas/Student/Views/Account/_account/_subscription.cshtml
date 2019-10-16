@@ -10,6 +10,19 @@
         <div class="list-group list-group-fit">
             <div class="list-group-item">
                 <div class="form-group row mb-0">
+                    <label class="col-form-label form-label col-sm-3">Pay type</label>
+                    <div class="col-sm-9 d-flex align-items-center">
+                        <div class="flex">
+                            @*@await Html.PartialAsync("PaymentInfo", new { Area="Payment", Controller="Paystack"})*@
+                        
+                        </div>
+                        @*<a href="fixed-student-account-billing-upgrade.html" class="text-secondary">Change plan</a>*@
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-group-item">
+                <div class="form-group row mb-0">
                     <label class="col-form-label form-label col-sm-3">Your current plan</label>
                     <div class="col-sm-9 d-flex align-items-center">
                         <div class="flex">Basic, &dollar;9 per month</div>

@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "_LogintLayout";
+    ViewData["Title"] = "signed up";
+}
+
+<section>
+    <div class="d-flex align-items-center" style="min-height: 100vh">
+        <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 400px;">
+            <div class="text-center mt-5 mb-1">
+                <div class="avatar avatar-lg">
+                    <a asp-action="Index" asp-controller="Home" asp-area="" ><img src="~/images/logo-4.png" class="avatar-img rounded-circle" alt="ESUT LMS" /></a>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-5 navbar-light">
+                <a asp-action="Index" asp-controller="Home" asp-area="" class="navbar-brand m-0">ESUT LMS</a>
+            </div>
+
+            <div style="padding:40px; background:#fff;">
+                
+                @*<h2><i class="fa fa-thumbs-up"></i> Thank you for signing up</h2>*@
+
+                <h2><i class="fa fa-check-square-o"></i> Thank you for signing up</h2>
+                <hr />
+                <div>
+                    <h4 class="text-success">
+                        An email has been sent to you. Kindly verify your email to enable you login and manage your account.
+                    </h4>
+
+                </div>
+                <hr />
+                <div>
+                    <h4 class="text-success">
+                        Please <a asp-action="Index" asp-controller="Home" asp-area="">click here to go to home page</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        @*<div>
+                <p>
+                    Thank you for confirming your email. Please <a asp-action="Login" asp-controller="Account" asp-area="">Click here to Log in</a>
+                </p>
+            </div>*@

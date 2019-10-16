@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using LmsGateway.Web.Models;
 using LmsGateway.Core.Notifications;
 using LmsGateway.Core.Extensions;
+using LmsGateway.Core.Models;
 
 namespace LmsGateway.Web.Controllers
 {
@@ -27,6 +28,11 @@ namespace LmsGateway.Web.Controllers
             _signinManager = signinManager;
             _emailService = emailService;
             _emailServer = emailServer;
+
+            //IAssemblyProvider
+            //DefaultAssemblyProvider
+            //IAssemblyLoaderContainer
+            //IAssemblyLoadContextAccessor
         }
         
         [AllowAnonymous]
@@ -47,20 +53,51 @@ namespace LmsGateway.Web.Controllers
                 User user = await _userManager.FindByEmailAsync(loginModel.Email);
                 if (user != null)
                 {
+                    
                     await _signinManager.SignOutAsync();
-
+                    
                     Microsoft.AspNetCore.Identity.SignInResult result = await _signinManager.PasswordSignInAsync(user, loginModel.Password, loginModel.RememberMe, false);
                     if (result.Succeeded)
                     {
-                        //return Redirect(loginModel.ReturnUrl ?? "/");
-
-                        if (loginModel.ReturnUrl.IsEmpty())
+                        if (user.EmailConfirmed)
                         {
-                            return RedirectToAction("Index", "Dashboard", new { Area = "Student" });
+                            if (user.Verified)
+                            {
+                                //if (loginModel.ReturnUrl.IsEmpty())
+                                //{
+                                //    return RedirectToAction("Index", "Dashboard", new { Area = "Student" });
+                                //}
+                                //else
+                                //{
+                                
+                                switch (user.Type)
+                                {
+                                    case UserType.Admin:
+                                        {
+                                            return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
+                                        }
+                                    case UserType.Instructor:
+                                        {
+                                            return RedirectToAction("Index", "Dashboard", new { Area = "Instructor" });
+                                        }
+                                    case UserType.Student:
+                                        {
+                                            return RedirectToAction("Index", "Dashboard", new { Area = "Student" });
+                                        }
+                                    default:
+                                        {
+                                            return Redirect(loginModel.ReturnUrl);
+                                        }
+                                }
+                            }
+                            else
+                            {
+                                ModelState.AddModelError(nameof(loginModel.Password), "Your verification is still pending! Please contact your system administrator.");
+                            }
                         }
                         else
                         {
-                            return Redirect(loginModel.ReturnUrl);
+                            ModelState.AddModelError(nameof(loginModel.Password), "Your email has not been confirmed! Please confirm your email from your registered email");
                         }
                     }
                 }
@@ -87,24 +124,33 @@ namespace LmsGateway.Web.Controllers
             {
                 if (model.IAgree)
                 {
-                    User user = new User() { Name = model.Name, Email = model.Email, UserName = model.Email };
+                    User user = new User() { Name = model.Name, Email = model.Email, UserName = model.Email, Type = (UserType)Enum.Parse(typeof(UserType), model.Type), Verified = false };
 
-                    IdentityResult result = await _userManager.CreateAsync(user, model.Password);
-                    if (result.Succeeded)
+                    try
                     {
-                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                        var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-
-                        await SendMail(user, callbackUrl);
-                        
-                        return RedirectToAction(nameof(Login), new { returnUrl = model.ReturnUrl });
-                    }
-                    else
-                    {
-                        foreach (IdentityError error in result.Errors)
+                        IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+                        if (result.Succeeded)
                         {
-                            ModelState.AddModelError(nameof(model.ConfirmPassword), error.Description);
+                            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                            var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+
+                            await SendMail(user, callbackUrl);
+
+                            return RedirectToAction(nameof(SignedUp));
+
+                            //return RedirectToAction(nameof(Login), new { returnUrl = model.ReturnUrl });
                         }
+                        else
+                        {
+                            foreach (IdentityError error in result.Errors)
+                            {
+                                ModelState.AddModelError(nameof(model.ConfirmPassword), error.Description);
+                            }
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        ModelState.AddModelError(nameof(model.IAgree), ex.Message);
                     }
                 }
                 else
@@ -112,15 +158,90 @@ namespace LmsGateway.Web.Controllers
                     ModelState.AddModelError(nameof(model.IAgree), "You must agree to the terms and condition");
                 }
             }
+            //else
+            //{
+            //    List<string> errors = new List<string>();
+            //    foreach (var modelState in ModelState.Values)
+            //    {
+            //        foreach (var modelError in modelState.Errors)
+            //        {
+            //            errors.Add(modelError.ErrorMessage);
+            //        }
+            //    }
+
+            //    var str = new System.Text.StringBuilder();
+            //    errors.ForEach(x => str.Append(x + "\n"));
+            //    ModelState.AddModelError(nameof(model.ConfirmPassword), str.ToString());
+
+            //}
 
             return View(model);
         }
 
-        //[HttpPost]
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SignupForm(UserModel model)
+        {
+            string message = null;
+
+            if (ModelState.IsValid)
+            {
+                if (model.IAgree)
+                {
+                    User user = new User() { Name = model.Name, Email = model.Email, UserName = model.Email, Type = (UserType)Enum.Parse(typeof(UserType), model.Type), Verified = false };
+
+                    IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+
+                        try
+                        {
+                            await SendMail(user, callbackUrl);
+                        }
+                        catch(Exception ex)
+                        {
+                            message += "Your account was successfully created, but sending email to your email failed with the following error:\n\n " + ex.Message + "\n\nKindly contact your system administrator to verify your email\n";
+                        }
+                        
+                        return Json("ok");
+
+                        //return RedirectToAction(nameof(Login), new { returnUrl = model.ReturnUrl });
+                    }
+                    else
+                    {
+                        foreach (IdentityError error in result.Errors)
+                        {
+                            message += error.Description + "\n";
+
+                            //ModelState.AddModelError(nameof(model.ConfirmPassword), error.Description);
+                        }
+                    }
+                }
+                else
+                {
+                    message += "You must agree to the terms and condition\n";
+
+                    //ModelState.AddModelError(nameof(model.IAgree), "You must agree to the terms and condition");
+                }
+            }
+
+            return Json(message);
+
+            //return View(model);
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> SignedUp()
+        {
+            return await Task.FromResult(View());
+        }
+
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
-            //Find User Details by userId
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
@@ -128,10 +249,7 @@ namespace LmsGateway.Web.Controllers
             }
 
             var result = await _userManager.ConfirmEmailAsync(user, code);
-            ViewBag.Message = "Your email has been confirmed. Please Login now. ";
-            //ViewData["Message"] = "Your email has been confirmed. Please Login now. ";
-
-            ViewData["MessageValue"] = "1";
+            TempData["Message"] = "Your email has been confirmed. Please contact your system adminstrator to verify your account.";
 
             return RedirectToAction(nameof(Login));
         }
@@ -158,7 +276,7 @@ namespace LmsGateway.Web.Controllers
             //email.Message = $"Click {callBackUrl} to activate your account";
 
             var builder = new MimeKit.BodyBuilder();
-            builder.HtmlBody = "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>";
+            builder.HtmlBody = $"Please confirm your account by clicking <a href='{callbackUrl}'>here</a>";
 
             email.Message = builder.HtmlBody;
             email.Subject = "Activate Your Account";

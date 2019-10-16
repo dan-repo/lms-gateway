@@ -1,20 +1,30 @@
 ﻿@model UserModel
 @{ 
     Layout = "_LogintLayout";
+    ViewData["Title"] = "signup";
 }
 
 <section >
     <div class="d-flex align-items-center" style="min-height: 100vh">
         <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
+
             <div class="text-center mt-5 mb-1">
                 <div class="avatar avatar-lg">
-                    @*<img src="assets/images/logo/primary.svg" class="avatar-img rounded-circle" alt="LearnPlus" />*@
+                    <a asp-action="Index" asp-controller="Home" asp-area=""><img src="~/images/logo-4.png" class="avatar-img rounded-circle" alt="ESUT LMS" /></a>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-5 navbar-light">
+                <a asp-action="Index" asp-controller="Home" asp-area="" class="navbar-brand m-0">ESUT LMS</a>
+            </div>
+
+            @*<div class="text-center mt-5 mb-1">
+                <div class="avatar avatar-lg">
                     <img src="~/images/logo-4.png" class="avatar-img rounded-circle" alt="ESUT LMS" />
                 </div>
             </div>
             <div class="d-flex justify-content-center mb-5 navbar-light">
                 <a href="student-dashboard.html" class="navbar-brand m-0">ESUT LMS</a>
-            </div>
+            </div>*@
             <div class="card navbar-shadow">
                 <div class="card-header text-center">
                     <h4 class="card-title">Sign Up</h4>
@@ -65,6 +75,28 @@
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            @*<label asp-for="Email" class="form-label" >Email address:</label>*@
+                            <div class="input-group input-group-merge">
+                                <select class="form-control" asp-for="Type" asp-items="Model.Types">
+                                    
+                                </select>
+
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fa fa-user-circle-o"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <span asp-validation-for="Type" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                       
+
+
                         <div class="form-group">
                             @*<label class="form-label" asp-for="Password">Password:</label>*@
                             <div class="input-group input-group-merge">

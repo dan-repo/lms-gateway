@@ -5,26 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Student - Dashboard - Fixed layout</title>
+    <title>@ViewData["Title"] - LMS</title>
 
     <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
     <meta name="robots" content="noindex">
-
-    <!-- Perfect Scrollbar -->
-    @*<link type="text/css" href="assets/vendor/perfect-scrollbar.css" rel="stylesheet">
-
-    <!-- Material Design Icons -->
-    <link type="text/css" href="assets/css/material-icons.css" rel="stylesheet">
-    <link type="text/css" href="assets/css/material-icons.rtl.css" rel="stylesheet">
-
-    <!-- Font Awesome Icons -->
-    <link type="text/css" href="assets/css/fontawesome.css" rel="stylesheet">
-    <link type="text/css" href="assets/css/fontawesome.rtl.css" rel="stylesheet">
-
-    <!-- App CSS -->
-    <link type="text/css" href="assets/css/app.css" rel="stylesheet">
-    <link type="text/css" href="assets/css/app.rtl.css" rel="stylesheet">*@
-
 
     <!-- Perfect Scrollbar -->
     <link type="text/css" href="~/css/admin/vendor/perfect-scrollbar.css" rel="stylesheet">
@@ -44,14 +28,7 @@
     <link type="text/css" href="~/css/admin/app.rtl.css" rel="stylesheet">
     <link type="text/css" href="~/css/admin/app-override.css" rel="stylesheet">
 
-
-
     <script type='text/javascript' id='1qa2ws' charset='utf-8' src='~/js/admin/default/base.js'></script>
-
-
-
-
-
 
 </head>
 @*<script type='text/javascript' id='1qa2ws' charset='utf-8' src='http://10.71.184.6:8080/www/default/base.js'></script>*@
@@ -231,12 +208,18 @@
                             <li class="nav-item dropdown ml-1 ml-md-3">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="~/images/avarta.jpg" alt="Avatar" class="rounded-circle" width="40"></a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="fixed-student-account-edit.html">
+                                    @*<a class="dropdown-item" href="fixed-student-account-edit.html">*@
+                                    <a class="dropdown-item" href="#">
                                         <i class="material-icons">edit</i> Edit Account
                                     </a>
-                                    <a class="dropdown-item" href="fixed-student-account-edit-profile.html">
+                                    @*<a class="dropdown-item" href="fixed-student-account-edit-profile.html">*@
+                                    <a class="dropdown-item" href="#">
                                         <i class="material-icons">person</i>  Profile &amp; Privacy
                                     </a>
+
+
+
+
                                     @*<a class="dropdown-item" href="fixed-student-profile.html">
                                         <i class="material-icons">person</i> Public Profile
                                     </a>*@
@@ -299,11 +282,12 @@
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="fixed-student-account-edit.html">Available Courses</a>
+                                        <a class="dropdown-item" asp-action="Index" asp-controller="Users" asp-area="Admin">Users</a>
+                                        <a class="dropdown-item" asp-action="List" asp-controller="Course" asp-area="Content" >Courses</a>
                                         @*<a class="dropdown-item" href="fixed-student-account-edit.html">Edit Account</a>
                                         <a class="dropdown-item" href="fixed-student-account-edit-basic.html">Basic Information</a>*@
                                         @*<a class="dropdown-item" href="fixed-student-account-edit-profile.html">Profile &amp; Privacy</a>*@
-                                        <a class="dropdown-item" asp-action="Subscription" asp-controller="Account" asp-area="Student">Subscription</a>
+                                        <a class="dropdown-item" href="#">Subscriptions</a>
 
 
                                         @*<a class="dropdown-item" href="fixed-student-account-billing-upgrade.html">Upgrade Account</a>
@@ -1304,6 +1288,7 @@
     <!-- Chart.js Samples -->
     <script src="assets/js/page.student-dashboard.js"></script>*@
 
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>

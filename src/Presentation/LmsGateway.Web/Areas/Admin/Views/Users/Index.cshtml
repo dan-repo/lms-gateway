@@ -1,0 +1,101 @@
+﻿@model List<User>
+
+<div class="page ">
+    <div class="container page__container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="fixed-instructor-dashboard.html">Admin</a></li>
+            <li class="breadcrumb-item active">Users</li>
+        </ol>
+
+        @*<h1 class="h2">Users</h1>*@
+
+        <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+            <div class="flex mb-2 mb-sm-0">
+                <h1 class="h2">Users</h1>
+            </div>
+            <a asp-action="PaymentInfo" asp-controller="Paystack" asp-area="" class="btn btn-secondary">Save</a>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    @*<div class="col-lg-4">
+                        <h4 class="card-title">Toggle Checkboxes</h4>
+                        <p>A tiny plugin which adds the ability to toggle all checkboxes within a table.</p>
+                    </div>*@
+
+                    <div class="col-lg-12">
+                        @*<div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>*@
+
+                        <div class="table-responsive border-bottom" data-toggle="lists">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+
+                                        @*<th style="width: 18px;">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#staff" id="customCheckAll">
+                                <label class="custom-control-label" for="customCheckAll"><span class="text-hide">Toggle all</span></label>
+                            </div>
+                        </th>*@
+
+                                        <th></th>
+                                        <th>Name</th>
+                                        @*<th>Type</th>*@
+                                        <th>Username</th>
+                                        <th>Failed Logins</th>
+                                        <th>Logins</th>
+                                        @*<th style="width: 25px;">Confirmed</th>*@
+                                        <th style="width: 25px;">Verified</th>
+                                        @*<th >Email</th>*@
+
+                                    </tr>
+                                </thead>
+                                <tbody class="list" id="staff">
+                                    @for (int i = 0; i < Model.Count; i++)
+                                    {
+                                        <tr class="selected">
+                                            <td>@(i + 1).</td>
+                                            <td>
+                                                <div class="media align-items-center">
+                                                    @*<div class="avatar avatar-sm mr-3">
+                                        <img src="assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="Avatar" class="avatar-img rounded-circle">
+                                    </div>*@
+                                                    <div class="media-body">
+                                                        <span class="js-lists-values-employee-name">@Model[i].Name (@Model[i].Type.ToString())</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <td>@Model[i].UserName </td>
+                                            <td>@Model[i].AccessFailedCount</td>
+                                            <td>@Model[i].Logins.Count</td>
+                                            @*<td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input asp-for="@Model[i].EmailConfirmed" class="custom-control-input" disabled="disabled" >
+                                                    <label asp-for="@Model[i].EmailConfirmed" class="custom-control-label"><span class="text-hide">Check</span></label>
+                                                </div>
+                                            </td>*@
+                                            <td>
+                                                <input type="hidden" asp-for="@Model[i].Id" />
+                                                <div class="custom-control custom-checkbox">
+                                                    <input asp-for="@Model[i].Verified" class="custom-control-input">
+                                                    <label asp-for="@Model[i].Verified" class="custom-control-label"><span class="text-hide">Check</span></label>
+                                                </div>
+                                            </td>
+                                                                                       
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,630 @@
+﻿ @{ 
+
+ }
+
+<div class="page ">
+    <div class="container page__container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="fixed-instructor-dashboard.html">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+        <h1 class="h2">Dashboard</h1>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <div class="flex">
+                            <h4 class="card-title">Earnings</h4>
+                            <p class="card-subtitle">Last 7 Days</p>
+                        </div>
+                        <a href="fixed-instructor-earnings.html" class="btn btn-sm btn-primary"><i class="material-icons">trending_up</i></a>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart" style="height: 200px;">
+                            <canvas id="earningsChart" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <div class="flex">
+                            <h4 class="card-title">Transactions</h4>
+                            <p class="card-subtitle">Latest Transactions</p>
+                        </div>
+                        <a href="fixed-instructor-statement.html" class="btn btn-sm btn-primary"><i class="material-icons">receipt</i></a>
+                    </div>
+                    <div data-toggle="lists" data-lists-values='[
+            "js-lists-values-course",
+            "js-lists-values-document",
+            "js-lists-values-amount",
+            "js-lists-values-date"
+          ]' data-lists-sort-by="js-lists-values-date" data-lists-sort-desc="true" class="table-responsive">
+                        <table class="table table-nowrap m-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th colspan="2">
+                                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-course">Course</a>
+                                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-document">Document</a>
+                                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-amount">Amount</a>
+                                        <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-date">Date</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="list">
+
+                                <tr>
+                                    <td>
+                                        <div class="media align-items-center">
+                                            <a href="fixed-instructor-course-edit.html" class="avatar avatar-4by3 avatar-sm mr-3">
+                                                <img src="assets/images/vuejs.png" alt="course" class="avatar-img rounded">
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="text-body js-lists-values-course" href="fixed-instructor-course-edit.html"><strong>Angular Routing In-Depth</strong></a><br>
+                                                <small class="text-muted mr-1">
+                                                    Invoice
+                                                    <a href="fixed-instructor-invoice.html" style="color: inherit;" class="js-lists-values-document">#8734</a> -
+                                                    &dollar;<span class="js-lists-values-amount">89</span> USD
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <small class="text-muted text-uppercase js-lists-values-date">12 Nov 2018</small>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="media align-items-center">
+                                            <a href="fixed-instructor-course-edit.html" class="avatar avatar-4by3 avatar-sm mr-3">
+                                                <img src="assets/images/vuejs.png" alt="course" class="avatar-img rounded">
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="text-body js-lists-values-course" href="fixed-instructor-course-edit.html"><strong>Angular Unit Testing</strong></a><br>
+                                                <small class="text-muted mr-1">
+                                                    Invoice
+                                                    <a href="fixed-instructor-invoice.html" style="color: inherit;" class="js-lists-values-document">#8735</a> -
+                                                    &dollar;<span class="js-lists-values-amount">89</span> USD
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <small class="text-muted text-uppercase js-lists-values-date">13 Nov 2018</small>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="media align-items-center">
+                                            <a href="fixed-instructor-course-edit.html" class="avatar avatar-4by3 avatar-sm mr-3">
+                                                <img src="assets/images/github.png" alt="course" class="avatar-img rounded">
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="text-body js-lists-values-course" href="fixed-instructor-course-edit.html"><strong>Introduction to TypeScript</strong></a><br>
+                                                <small class="text-muted mr-1">
+                                                    Invoice
+                                                    <a href="fixed-instructor-invoice.html" style="color: inherit;" class="js-lists-values-document">#8736</a> -
+                                                    &dollar;<span class="js-lists-values-amount">89</span> USD
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <small class="text-muted text-uppercase js-lists-values-date">14 Nov 2018</small>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="media align-items-center">
+                                            <a href="fixed-instructor-course-edit.html" class="avatar avatar-4by3 avatar-sm mr-3">
+                                                <img src="assets/images/gulp.png" alt="course" class="avatar-img rounded">
+                                            </a>
+                                            <div class="media-body">
+                                                <a class="text-body js-lists-values-course" href="fixed-instructor-course-edit.html"><strong>Learn Angular Fundamentals</strong></a><br>
+                                                <small class="text-muted mr-1">
+                                                    Invoice
+                                                    <a href="fixed-instructor-invoice.html" style="color: inherit;" class="js-lists-values-document">#8737</a> -
+                                                    &dollar;<span class="js-lists-values-amount">89</span> USD
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <small class="text-muted text-uppercase js-lists-values-date">15 Nov 2018</small>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <div class="flex">
+                            <h4 class="card-title">Sales today</h4>
+                            <p class="card-subtitle">by course</p>
+                        </div>
+                        <a class="btn btn-sm btn-primary" href="fixed-instructor-earnings.html">Earnings</a>
+                    </div>
+                    <ul class="list-group list-group-fit mb-0">
+                        <li class="list-group-item">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <a href="fixed-instructor-course-edit.html" class="text-body"><strong>Basics of HTML</strong></a>
+                                </div>
+                                <div class="media-right">
+                                    <div class="text-center">
+                                        <span class="badge badge-pill badge-primary">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <a href="fixed-instructor-course-edit.html" class="text-body"><strong>Angular in Steps</strong></a>
+                                </div>
+                                <div class="media-right">
+                                    <div class="text-center">
+                                        <span class="badge badge-pill badge-success">50</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <a href="fixed-instructor-course-edit.html" class="text-body"><strong>Bootstrap Foundations</strong></a>
+                                </div>
+                                <div class="media-right">
+                                    <div class="text-center">
+                                        <span class="badge badge-pill badge-warning">14</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <a href="fixed-instructor-course-edit.html" class="text-body"><strong>GitHub Basics</strong></a>
+                                </div>
+                                <div class="media-right">
+                                    <div class="text-center">
+                                        <span class="badge badge-pill  badge-danger ">14</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <div class="flex">
+                            <h4 class="card-title">Comments</h4>
+                            <p class="card-subtitle">Latest comments</p>
+                        </div>
+                        <div class="text-right" style="min-width: 80px;">
+                            <a href="#" class="btn btn-outline-primary btn-sm"><i class="material-icons">keyboard_arrow_left</i></a>
+                            <a href="#" class="btn btn-outline-primary btn-sm"><i class="material-icons">keyboard_arrow_right</i></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#" class="avatar avatar-sm">
+                                    <img src="assets/images/people/110/guy-9.jpg" alt="Guy" class="avatar-img rounded-circle">
+                                </a>
+                            </div>
+                            <div class="media-body d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <a href="fixed-instructor-profile.html" class="text-body"><strong>Laza Bogdan</strong></a>
+                                    <small class="ml-auto text-muted">27 min ago</small><br>
+                                </div>
+                                <span class="text-muted">on <a href="fixed-instructor-course-edit.html" class="text-black-50" style="text-decoration: underline;">Data Visualization With Chart.js</a></span>
+                                <p class="mt-1 mb-0 text-black-70">How can I load Charts on a page?</p>
+                            </div>
+                        </div>
+                        <div class="media ml-sm-32pt mt-3 border rounded p-3 bg-light">
+                            <div class="media-left">
+                                <a href="#" class="avatar avatar-sm">
+                                    <img src="assets/images/people/110/guy-6.jpg" alt="Guy" class="avatar-img rounded-circle">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <div class="d-flex align-items-center">
+                                    <a href="fixed-instructor-profile.html" class="text-body"><strong>FrontendMatter</strong></a>
+                                    <small class="ml-auto text-muted">just now</small>
+                                </div>
+                                <p class="mt-1 mb-0 text-black-70">Hi Bogdan,<br> Thank you for purchasing our course! <br><br>Please have a look at the charts library documentation <a href="#">here</a> and follow the instructions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <form action="#" id="message-reply">
+                            <div class="input-group input-group-merge">
+                                <input type="text" class="form-control form-control-appended" required="" placeholder="Quick Reply">
+                                <div class="input-group-append">
+                                    <div class="input-group-text pr-2">
+                                        <button class="btn btn-flush" type="button"><i class="material-icons">tag_faces</i></button>
+                                    </div>
+                                    <div class="input-group-text pl-0">
+                                        <div class="custom-file custom-file-naked d-flex" style="width: 24px; overflow: hidden;">
+                                            <input type="file" class="custom-file-input" id="customFile">
+                                            <label class="custom-file-label" style="color: inherit;" for="customFile">
+                                                <i class="material-icons">attach_file</i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group-text pl-0">
+                                        <button class="btn btn-flush" type="button"><i class="material-icons">send</i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container page__container">
+        <div class="footer">
+            Copyright &copy; 2016 - <a href="http://themeforest.net/item/learnplus-learning-management-application/15287372?ref=mosaicpro">Purchase LearnPlus</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    @*<div class="page ">
+            <div class="container page__container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="fixed-student-dashboard.html">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <h1 class="h2">Dashboard</h1>
+
+                <div class="card border-left-3 border-left-primary card-2by1">
+                    <div class="card-body">
+                        <div class="media flex-wrap align-items-center">
+                            <div class="media-left">
+                                <i class="material-icons text-muted-light">credit_card</i>
+                            </div>
+                            <div class="media-body" style="min-width: 180px">
+                                Your subscription ends on <strong>25 February 2015</strong>
+                            </div>
+                            <div class="media-right mt-2 mt-xs-plus-0">
+                                <a class="btn btn-success" href="fixed-student-account-billing-upgrade.html">Upgrade</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-7">
+
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="h2 mb-0 mr-3 text-primary">116</div>
+                                <div class="flex">
+                                    <h4 class="card-title">Angular</h4>
+                                    <p class="card-subtitle">Best score</p>
+                                </div>
+                                <div class="dropdown">
+                                    <a href="#" class="dropdown-toggle text-black-70" data-toggle="dropdown">Popular Topics</a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="" class="dropdown-item">Popular Topics</a>
+                                        <a href="" class="dropdown-item">Web Design</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart" style="height: 319px;">
+                                    <canvas id="topicIqChart" class="chart-canvas"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <h4 class="card-title">Courses</h4>
+                                        <p class="card-subtitle">Your recent courses</p>
+                                    </div>
+                                    <div class="media-right">
+                                        <a class="btn btn-sm btn-primary" href="fixed-student-my-courses.html">My courses</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <ul class="list-group list-group-fit mb-0" style="z-index: initial;">
+
+                                <li class="list-group-item" style="z-index: initial;">
+                                    <div class="d-flex align-items-center">
+                                        <a href="fixed-student-take-course.html" class="avatar avatar-4by3 avatar-sm mr-3">
+                                            <img src="assets/images/gulp.png" alt="course" class="avatar-img rounded">
+                                        </a>
+                                        <div class="flex">
+                                            <a href="fixed-student-take-course.html" class="text-body"><strong>Learn Vue.js Fundamentals</strong></a>
+                                            <div class="d-flex align-items-center">
+                                                <div class="progress" style="width: 100px;">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small class="text-muted ml-2">25%</small>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown ml-3">
+                                            <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
+                                                <i class="material-icons">more_vert</i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="fixed-student-take-course.html">Continue</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item" style="z-index: initial;">
+                                    <div class="d-flex align-items-center">
+                                        <a href="fixed-student-take-course.html" class="avatar avatar-4by3 avatar-sm mr-3">
+                                            <img src="assets/images/vuejs.png" alt="course" class="avatar-img rounded">
+                                        </a>
+                                        <div class="flex">
+                                            <a href="fixed-student-take-course.html" class="text-body"><strong>Angular in Steps</strong></a>
+                                            <div class="d-flex align-items-center">
+                                                <div class="progress" style="width: 100px;">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small class="text-muted ml-2">100%</small>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown ml-3">
+                                            <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
+                                                <i class="material-icons">more_vert</i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="fixed-student-take-course.html">Continue</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item" style="z-index: initial;">
+                                    <div class="d-flex align-items-center">
+                                        <a href="fixed-student-take-course.html" class="avatar avatar-4by3 avatar-sm mr-3">
+                                            <img src="assets/images/nodejs.png" alt="course" class="avatar-img rounded">
+                                        </a>
+                                        <div class="flex">
+                                            <a href="fixed-student-take-course.html" class="text-body"><strong>Bootstrap Foundations</strong></a>
+                                            <div class="d-flex align-items-center">
+                                                <div class="progress" style="width: 100px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small class="text-muted ml-2">80%</small>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown ml-3">
+                                            <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
+                                                <i class="material-icons">more_vert</i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="fixed-student-take-course.html">Continue</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <h4 class="card-title">Quizzes</h4>
+                                        <p class="card-subtitle">Your Performance</p>
+                                    </div>
+                                    <div class="media-right">
+                                        <a class="btn btn-sm btn-primary" href="#">Quiz results</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <ul class="list-group list-group-fit mb-0">
+
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <a class="text-body" href="fixed-student-quiz-results.html"><strong>Title of quiz goes here?</strong></a><br>
+                                            <div class="d-flex align-items-center">
+                                                <small class="text-black-50 text-uppercase mr-2">Course</small>
+                                                <a href="fixed-student-take-course.html">Basics of HTML</a>
+                                            </div>
+                                        </div>
+                                        <div class="media-right text-center d-flex align-items-center">
+                                            <span class="text-black-50 mr-3">Good</span>
+                                            <h4 class="mb-0">5.8</h4>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <a class="text-body" href="fixed-student-quiz-results.html"><strong>Directives &amp; Routing</strong></a><br>
+                                            <div class="d-flex align-items-center">
+                                                <small class="text-black-50 text-uppercase mr-2">Course</small>
+                                                <a href="fixed-student-take-course.html">Angular in Steps</a>
+                                            </div>
+                                        </div>
+                                        <div class="media-right text-center d-flex align-items-center">
+                                            <span class="text-black-50 mr-3">Great</span>
+                                            <h4 class="mb-0 text-success">9.8</h4>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <a class="text-body" href="fixed-student-quiz-results.html"><strong>Responsive &amp; Retina</strong></a><br>
+                                            <div class="d-flex align-items-center">
+                                                <small class="text-black-50 text-uppercase mr-2">Course</small>
+                                                <a href="fixed-student-take-course.html">Bootstrap Foundations</a>
+                                            </div>
+                                        </div>
+                                        <div class="media-right text-center d-flex align-items-center">
+                                            <span class="text-black-50 mr-3">Failed</span>
+                                            <h4 class="mb-0 text-danger">2.8</h4>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <div class="h2 mb-0 mr-3 text-primary">432</div>
+                                <div class="flex">
+                                    <h4 class="card-title">Experience IQ</h4>
+                                    <p class="card-subtitle">4 days streak this week</p>
+                                </div>
+                                <i class="material-icons text-muted ml-2">trending_up</i>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart" style="height: 154px;">
+                                    <canvas id="iqChart" class="chart-canvas"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-2by1">
+                            <div class="card-header">
+                                <h4 class="card-title">Rewards</h4>
+                                <p class="card-subtitle">Your latest achievements</p>
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="btn btn-primary btn-circle"><i class="material-icons">thumb_up</i></div>
+                                <div class="btn btn-danger btn-circle"><i class="material-icons">grade</i></div>
+                                <div class="btn btn-success btn-circle"><i class="material-icons">bubble_chart</i></div>
+                                <div class="btn btn-warning btn-circle"><i class="material-icons">keyboard_voice</i></div>
+                                <div class="btn btn-info btn-circle"><i class="material-icons">event_available</i></div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <h4 class="card-title">Forum Activity</h4>
+                                        <p class="card-subtitle">Latest forum topics &amp; replies</p>
+                                    </div>
+                                    <div class="media-right">
+                                        <a class="btn btn-sm btn-primary" href="fixed-student-forum.html"> <i class="material-icons">keyboard_arrow_right</i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <ul class="list-group list-group-fit">
+
+
+                                <li class="list-group-item forum-thread">
+                                    <div class="media align-items-center">
+                                        <div class="media-left">
+                                            <div class="forum-icon-wrapper">
+                                                <a href="fixed-student-forum-thread.html" class="forum-thread-icon">
+                                                    <i class="material-icons">description</i>
+                                                </a>
+                                                <a href="fixed-student-profile.html" class="forum-thread-user">
+                                                    <img src="assets/images/people/50/guy-1.jpg" alt="" width="20" class="rounded-circle">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="d-flex align-items-center">
+                                                <a href="fixed-student-profile.html" class="text-body"><strong>Luci Bryant</strong></a>
+                                                <small class="ml-auto text-muted">5 min ago</small>
+                                            </div>
+                                            <a class="text-black-70" href="fixed-student-forum-thread.html">Am I learning the right way?</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item forum-thread">
+                                    <div class="media align-items-center">
+                                        <div class="media-left">
+                                            <div class="forum-icon-wrapper">
+                                                <a href="fixed-student-forum-thread.html" class="forum-thread-icon">
+                                                    <i class="material-icons">description</i>
+                                                </a>
+                                                <a href="fixed-student-profile.html" class="forum-thread-user">
+                                                    <img src="assets/images/people/50/guy-2.jpg" alt="" width="20" class="rounded-circle">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="d-flex align-items-center">
+                                                <a href="fixed-student-profile.html" class="text-body"><strong>Magnus Goldsmith</strong></a>
+                                                <small class="ml-auto text-muted">7 min ago</small>
+                                            </div>
+                                            <a class="text-black-70" href="fixed-student-forum-thread.html">Can someone help me with the basic Setup?</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item forum-thread">
+                                    <div class="media align-items-center">
+                                        <div class="media-left">
+                                            <div class="forum-icon-wrapper">
+                                                <a href="fixed-student-forum-thread.html" class="forum-thread-icon">
+                                                    <i class="material-icons">description</i>
+                                                </a>
+                                                <a href="fixed-student-profile.html" class="forum-thread-user">
+                                                    <img src="assets/images/people/50/woman-1.jpg" alt="" width="20" class="rounded-circle">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="d-flex align-items-center">
+                                                <a href="fixed-student-profile.html" class="text-body"><strong>Katelyn Rankin</strong></a>
+                                                <small class="ml-auto text-muted">12 min ago</small>
+                                            </div>
+                                            <a class="text-black-70" href="fixed-student-forum-thread.html">I think this is the right way?</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="container page__container">
+                <div class="footer">
+                    Copyright &copy; 2016 - <a href="http://themeforest.net/item/learnplus-learning-management-application/15287372?ref=mosaicpro">Purchase LearnPlus</a>
+                </div>
+            </div>
+        </div>*@
+

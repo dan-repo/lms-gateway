@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace LmsGateway.Web.Models
 {
-    public class UrlModel
+    public class ValueModel
     {
-        public string ReturnUrl { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

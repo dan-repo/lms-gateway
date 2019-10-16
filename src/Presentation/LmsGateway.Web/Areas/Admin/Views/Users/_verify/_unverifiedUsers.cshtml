@@ -1,0 +1,59 @@
+﻿@model List<User>
+
+<form id="frmVerifyUser" method="post" asp-action="Verify" asp-controller="Users" asp-area="Admin" asp-antiforgery="true">
+    <table class="table mb-0">
+        <thead>
+            <tr>
+                <th style="width: 18px;"></th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Type</th>
+                <th>
+                    <div class="custom-control custom-checkbox">
+                        <input id="checkAll" type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#staff" />
+                        <label class="custom-control-label" for="checkAll"><span class="text-hide">Toggle all</span></label>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="list" id="staff">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr class="selected">
+                    <td>
+                        @(i + 1).
+                    <input type="hidden" asp-for="@Model[i].Id" />
+                </td>
+                <td>
+                    <div class="media align-items-center">
+                        <div class="media-body">
+                            <span class="js-lists-values-employee-name">
+                                @Model[i].Name
+                                <input type="hidden" asp-for="@Model[i].Name" />
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @Model[i].UserName
+                    <input type="hidden" asp-for="@Model[i].UserName" />
+                </td>
+                <td>
+                    @Model[i].Type.ToString()
+                    <input type="hidden" asp-for="@Model[i].Type" />
+                </td>
+                <td>
+                    @*<input asp-for="@Model[i].Verified" class="ckb" />*@
+                   
+                    <div class="custom-control custom-checkbox">
+                        
+                        <input asp-for="@Model[i].Verified" class="custom-control-input ckb" >
+                        <label asp-for="@Model[i].Verified" class="custom-control-label"><span class="text-hide">Check</span></label>
+                    </div>
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</form>
