@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using LmsGateway.Domain;
+using LmsGateway.Domain.Users;
 
 namespace LmsGateway.Core.Models
 {

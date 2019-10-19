@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,9 +28,7 @@
     <link type="text/css" href="~/css/admin/app-override.css" rel="stylesheet">
 
     <script type='text/javascript' id='1qa2ws' charset='utf-8' src='~/js/admin/default/base.js'></script>
-
 </head>
-@*<script type='text/javascript' id='1qa2ws' charset='utf-8' src='http://10.71.184.6:8080/www/default/base.js'></script>*@
 
 <body class="fixed-layout">
     <div class="preloader">
@@ -206,13 +203,12 @@
                             <!-- // END Notifications dropdown -->
                             <!-- User dropdown -->
                             <li class="nav-item dropdown ml-1 ml-md-3">
+                                <a class="nav-link">@User.Identity.Name &nbsp; </a>
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="~/images/avarta.jpg" alt="Avatar" class="rounded-circle" width="40"></a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    @*<a class="dropdown-item" href="fixed-student-account-edit.html">*@
                                     <a class="dropdown-item" href="#">
                                         <i class="material-icons">edit</i> Edit Account
                                     </a>
-                                    @*<a class="dropdown-item" href="fixed-student-account-edit-profile.html">*@
                                     <a class="dropdown-item" href="#">
                                         <i class="material-icons">person</i>  Profile &amp; Privacy
                                     </a>
@@ -256,7 +252,7 @@
                         <div class="navbar-collapse collapse" id="navbarsExample03">
                             <ul class="nav navbar-nav">
                                 <li class="nav-item active">
-                                    <a href="#" class="nav-link">Dashboard</a>
+                                    <a asp-action="Index" asp-controller="Dashboard" asp-area="Admin" class="nav-link">Dashboard</a>
                                     @*<div class="dropdown-menu">
                         <a class="dropdown-item active" href="fixed-student-dashboard.html">Dashboard</a>
                         <a class="dropdown-item" href="fixed-student-browse-courses.html">Browse Courses</a>
@@ -279,86 +275,20 @@
                         <a class="dropdown-item" href="fixed-instructor-statement.html">Statement</a>
                     </div>
                 </li>*@
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Courses" asp-area="Admin">Courses</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Events" asp-area="Admin">Events</a>
+                                </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" asp-action="Index" asp-controller="Users" asp-area="Admin">Users</a>
-                                        <a class="dropdown-item" asp-action="List" asp-controller="Course" asp-area="Content" >Courses</a>
-                                        @*<a class="dropdown-item" href="fixed-student-account-edit.html">Edit Account</a>
-                                        <a class="dropdown-item" href="fixed-student-account-edit-basic.html">Basic Information</a>*@
-                                        @*<a class="dropdown-item" href="fixed-student-account-edit-profile.html">Profile &amp; Privacy</a>*@
-                                        <a class="dropdown-item" href="#">Subscriptions</a>
-
-
-                                        @*<a class="dropdown-item" href="fixed-student-account-billing-upgrade.html">Upgrade Account</a>
-                        <a class="dropdown-item" href="fixed-student-account-billing-payment-information.html">Payment Information</a>
-                        <a class="dropdown-item" href="fixed-student-billing.html">Payment History</a>
-                        <a class="dropdown-item" href="fixed-student-invoice.html">Student Invoice</a>
-
-                        <a class="dropdown-item" href="fixed-instructor-invoice.html">Instructor Invoice</a>
-                        <a class="dropdown-item" href="fixed-instructor-edit-invoice.html">Edit Invoice</a>
-                        <a class="dropdown-item" href="fixed-student-messages.html">Messages</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="guest-login.html">Login</a>
-                        <a class="dropdown-item" href="guest-signup.html">Signup</a>
-                        <a class="dropdown-item" href="guest-forgot-password.html">Forgot Password</a>*@
-
-
                                     </div>
                                 </li>
 
-
-                                @*<li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Community</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="fixed-student-forum.html">Forum</a>
-                        <a class="dropdown-item" href="fixed-student-forum-thread.html">Discussion</a>
-                        <a class="dropdown-item" href="fixed-student-forum-ask.html">Ask Question</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="fixed-student-profile.html">Student Profile - Courses</a>
-                        <a class="dropdown-item" href="fixed-student-profile-posts.html">Student Profile - Posts</a>
-                        <a class="dropdown-item" href="fixed-instructor-profile.html">Instructor Profile</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="fixed-student-help-center.html">Help Center</a>
-                    </div>
-                </li>*@
-                                @*<li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Components</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="fixed-ui-avatars.html">Avatars</a>
-                        <a class="dropdown-item" href="fixed-ui-forms.html">Forms</a>
-                        <a class="dropdown-item" href="fixed-ui-loaders.html">Loaders</a>
-                        <a class="dropdown-item" href="fixed-ui-tables.html">Tables</a>
-                        <a class="dropdown-item" href="fixed-ui-cards.html">Cards</a>
-                        <a class="dropdown-item" href="fixed-ui-tabs.html">Tabs</a>
-                        <a class="dropdown-item" href="fixed-ui-icons.html">Icons</a>
-                        <a class="dropdown-item" href="fixed-ui-buttons.html">Buttons</a>
-                        <a class="dropdown-item" href="fixed-ui-alerts.html">Alerts</a>
-                        <a class="dropdown-item" href="fixed-ui-badges.html">Badges</a>
-                        <!-- <a class="dropdown-item" href="fixed-ui-modals.html">- Modals</a> -->
-                        <a class="dropdown-item" href="fixed-ui-progress.html">Progress</a>
-                        <a class="dropdown-item" href="fixed-ui-pagination.html">Pagination</a>
-                    </div>
-                </li>*@
-                                @*<li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Plugins</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="fixed-ui-charts.html">Charts</a>
-                        <a class="dropdown-item" href="fixed-ui-drag.html">Drag &amp; Drop</a>
-                        <a class="dropdown-item" href="fixed-ui-calendar.html">Calendar</a>
-                        <a class="dropdown-item" href="fixed-ui-nestable.html">Nestable</a>
-                        <a class="dropdown-item" href="fixed-ui-tree.html">Tree</a>
-                        <a class="dropdown-item" href="fixed-ui-maps-vector.html">Vector Maps</a>
-                        <a class="dropdown-item" href="fixed-ui-sweet-alert.html">Sweet Alert</a>
-                    </div>
-                </li>*@
-                                @*<li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Layouts</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="student-dashboard.html">Fluid</a>
-                        <a class="dropdown-item active" href="fixed-student-dashboard.html">Fixed</a>
-                    </div>
-                </li>*@
                             </ul>
                         </div>
 
@@ -844,7 +774,7 @@
 
 
 
-        <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
+        @*<div class="mdk-drawer js-mdk-drawer" id="default-drawer">
             <div class="mdk-drawer__content ">
                 <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar>
                     <div class="sidebar-p-y">
@@ -1181,7 +1111,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
 
     </div>
 
@@ -1236,58 +1166,7 @@
     <!-- UI Charts Page JS -->
     <script src="~/js/admin/chartjs-rounded-bar.js"></script>
    <script src="~/js/admin/chartjs.js"></script>
-
-    <!-- Chart.js Samples -->
-    @*<script src="~/js/admin/page.student-dashboard.js"></script>*@
-
-
-
-
-    @*<!-- jQuery -->
-    <script src="assets/vendor/jquery.min.js"></script>
-
-    <!-- Bootstrap -->
-    <script src="assets/vendor/popper.min.js"></script>
-    <script src="assets/vendor/bootstrap.min.js"></script>
-
-    <!-- Perfect Scrollbar -->
-    <script src="assets/vendor/perfect-scrollbar.min.js"></script>
-
-    <!-- MDK -->
-    <script src="assets/vendor/dom-factory.js"></script>
-    <script src="assets/vendor/material-design-kit.js"></script>
-
-    <!-- App JS -->
-    <script src="assets/js/app.js"></script>
-
-    <!-- Highlight.js -->
-    <script src="assets/js/hljs.js"></script>
-
-    <!-- App Settings (safe to remove) -->
-    <script src="assets/js/app-settings.js"></script>
-
-
-
-
-
-
-    <!-- Global Settings -->
-    <script src="assets/js/settings.js"></script>
-
-    <!-- Moment.js -->
-    <script src="assets/vendor/moment.min.js"></script>
-    <script src="assets/vendor/moment-range.min.js"></script>
-
-    <!-- Chart.js -->
-    <script src="assets/vendor/Chart.min.js"></script>
-
-    <!-- UI Charts Page JS -->
-    <script src="assets/js/chartjs-rounded-bar.js"></script>
-    <script src="assets/js/chartjs.js"></script>
-
-    <!-- Chart.js Samples -->
-    <script src="assets/js/page.student-dashboard.js"></script>*@
-
+      
     @RenderSection("scripts", required: false)
 </body>
 

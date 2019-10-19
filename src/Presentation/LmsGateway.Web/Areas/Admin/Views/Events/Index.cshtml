@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EventModel>
+
+@{
+    ViewData["Title"] = "events";
+}
+
+@section scripts{
+<script>
+        $(document).ready(function () {
+            GetEvent(1);
+
+            $('.a-course').click(function (e) {
+                e.preventDefault();
+                GetEvent(this.href.split("/").pop());
+            })
+        });
+
+        function GetEvent(eventId) {
+            $("#span-" + eventId).show();
+
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetEvent", "Events")",
+                //url: "/Events/GetEvent",
+                dataType: 'html',
+                data: { id: eventId },
+                success: function (data) {
+                    $("#span-" + eventId).hide();
+                    $('#data').html(data);
+                },
+
+                error: function (request, status, error) {
+                    //isBusy(false);
+                    $("#span-" + eventId).hide();
+                    alert(error + " - Critical error occurred during message submission!");
+                }
+            })
+        }
+</script>
+}
+
+@await Html.PartialAsync("_Events", Model)

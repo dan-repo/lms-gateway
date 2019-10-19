@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" dir="ltr">
 
 <head>
@@ -16,43 +15,34 @@
 
     <!-- Material Design Icons -->
     <link type="text/css" href="~/css/admin/material-icons.css" rel="stylesheet">
-    <link type="text/css" href="~/css/admin/material-icons_002.css" rel="stylesheet">
-    @*<link type="text/css" href="~/css/admin/material-icons.rtl.css" rel="stylesheet">*@
+    <link type="text/css" href="~/css/admin/material-icons.rtl.css" rel="stylesheet">
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="~/css/font-awesome.min.css">
-
-    @*<link type="text/css" href="~/css/admin/fontawesome.css" rel="stylesheet">
-    <link type="text/css" href="~/css/admin/fontawesome_002.css" rel="stylesheet">*@
-    @*<link type="text/css" href="~/css/admin/fontawesome.rtl.css" rel="stylesheet">*@
+    <link rel="stylesheet" href="~/css/admin/fontawesome.css">
+    <link rel="stylesheet" href="~/css/admin/fontawesome.rtl.css">
 
     <!-- App CSS -->
     <link type="text/css" href="~/css/admin/app.css" rel="stylesheet">
-    <link type="text/css" href="~/css/admin/app_002.css" rel="stylesheet">
-    @*<link type="text/css" href="~/css/admin/app.rtl.css" rel="stylesheet">*@
-    
+    <link type="text/css" href="~/css/admin/app-override.css" rel="stylesheet">
+    <link type="text/css" href="~/css/admin/app.rtl.css" rel="stylesheet">
+
     <script type='text/javascript' id='1qa2ws' charset='utf-8' src='~/js/admin/default/base.js'></script>
 
 </head>
-
-
-@*<script type='text/javascript' id='1qa2ws' charset='utf-8' src='http://10.71.184.6:8080/www/default/base.js'></script>*@
 
 <body class="login">
     <div>
         @RenderBody()
     </div>
-
-
-
+        
     <!-- jQuery -->
-    <script src="assets/vendor/jquery.min.js"></script>
+    <script src="~/js/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
     <!-- Bootstrap -->
+    <script src="~/js/admin/vendor/popper.min.js"></script>
     <script src="~/js/admin/vendor/bootstrap.min.js"></script>
-    @*<script src="assets/vendor/bootstrap.min.js"></script>*@
 
     <!-- Perfect Scrollbar -->
     <script src="~/js/admin/vendor/perfect-scrollbar.min.js"></script>
@@ -71,7 +61,9 @@
     <script src="~/js/admin/app-settings.js"></script>
 
 
-    <!-- Global Settings -->
+
+    
+    @*<!-- Global Settings -->
     <script src="~/js/admin/settings.js"></script>
 
     <!-- Moment.js -->
@@ -79,14 +71,9 @@
     <script src="~/js/admin/vendor/moment-range.min.js"></script>
 
     <!-- Chart.js -->
-    <script src="~/js/admin/vendor/Chart.min.js"></script>
+    <script src="~/js/admin/vendor/Chart.min.js"></script>*@
 
-    <!-- UI Charts Page JS -->
-    <script src="~/js/admin/chartjs-rounded-bar.js"></script>
-    <script src="~/js/admin/chartjs.js"></script>
 
-    <!-- Chart.js Samples -->
-    @*<script src="~/js/admin/page.student-dashboard.js"></script>*@
 
 </body>
 

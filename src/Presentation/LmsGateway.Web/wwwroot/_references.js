@@ -19,6 +19,7 @@
 /// <reference path="js/bundled.js" />
 /// <reference path="js/circle-progress.min.js" />
 /// <reference path="js/easing.min.js" />
+/// <reference path="js/events.js" />
 /// <reference path="js/facnybox.min.js" />
 /// <reference path="js/gmaps.min.js" />
 /// <reference path="js/jquery.counterup.min.js" />

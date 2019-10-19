@@ -29,7 +29,7 @@ namespace LmsGateway.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return await Task.FromResult(View());
+            return await Task.FromResult(View(_courses));
         }
 
         public async Task<IActionResult> List()

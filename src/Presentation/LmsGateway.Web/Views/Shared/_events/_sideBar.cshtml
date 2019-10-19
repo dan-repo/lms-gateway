@@ -1,0 +1,87 @@
+﻿@model IEnumerable<EventModel>
+
+<div class="form-group">
+    <div class="search-form search-form--light input-group-lg">
+        <input id="searchSample01" type="text" class="form-control" placeholder="Search ..." >
+        <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+    </div>
+</div>
+
+@*<h3>Event <span>List</span></h3>*@
+
+@foreach (EventModel model1 in Model)
+{
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex flex-column flex-sm-row">
+                @*<a href="#" class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">*@
+                <a href="#" class="avatar avatar-xl mr-sm-3" >
+                    <img src="http://via.placeholder.com/150x150" alt="Card image cap" class="avatar-img rounded">
+                </a>
+                <div class="flex" style="min-width: 200px;">
+                    <h4><a class="a-course text-black-70" asp-route-id="@model1.Id">@model1.Category</a></h4>
+
+                    <p class="text-black-70">
+                        <div >@model1.DatePosted.Date.ToString("dd-MMM-yyyy") <span style="display:none;" id="span-@model1.Id"><i class="fa fa-refresh fa-spin" style="font-size:23px;"></i></span></div>
+                    </p>
+
+
+                    @*<div class="d-flex align-items-end">
+                            <div class="d-flex flex flex-column mr-3">
+                                <div class="d-flex align-items-center py-1 border-bottom">
+                                    <small class="text-black-70 mr-2">Price: @course.Cost</small>
+                                </div>
+                                <div class="d-flex align-items-center py-1">
+                                    <small class="text-muted">Level: @course.Level</small>
+                                </div>
+                            </div>
+                            <div class="text-center">
+
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" type="checkbox" value="" id="invalidCheck01">
+                                        <label class="custom-control-label" for="invalidCheck01">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+            <!-- Single Course -->
+            @*<div class="card">
+                    <div class="card-body">
+
+                        <div class="d-flex flex-column flex-sm-row">
+                            <div class="single-course" style="vertical-align:bottom;">
+                                <img src="http://via.placeholder.com/150x150" alt="#" />
+                                <div class="course-content">
+                                    <h4><a asp-route-id="@model1.Id" class="a-course">@model1.Category</a></h4>
+                                    <div>@model1.DatePosted.Date.ToString("dd-MMM-yyyy") <span style="display:none;" id="span-@model1.Id"><i class="fa fa-refresh fa-spin" style="font-size:23px;"></i></span></div>
+                                </div>
+                            </div>
+                            <!-- Single Course -->
+
+                        </div>
+                    </div>
+                </div>*@
+}
+
+
+@*<div class="single-widget tags">
+        <h3>Recent <span>Tags</span></h3>
+        <ul>
+            <li><a href="#">Course</a></li>
+            <li><a href="#">University</a></li>
+            <li><a href="#">Scholarship</a></li>
+            <li><a href="#">Free</a></li>
+            <li><a href="#">Standard</a></li>
+            <li><a href="#">Standard</a></li>
+        </ul>
+    </div>*@

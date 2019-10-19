@@ -34,7 +34,34 @@ namespace LmsGateway.Web.Controllers
             //IAssemblyLoaderContainer
             //IAssemblyLoadContextAccessor
         }
-        
+
+        #region Utilities
+
+        [NonAction]
+        private async Task SendMail(User user, string callbackUrl)
+        {
+            Email email = new Email();
+            email.ToEmailAddress = new EmailAddress() { Name = user.Name, Email = user.Email };
+            email.FromEmailAddress = new EmailAddress() { Name = _emailServer.Name, Email = _emailServer.Username };
+
+            var builder = new MimeKit.BodyBuilder();
+            builder.HtmlBody = $"Please confirm your email by clicking <b><a href='{callbackUrl}'>here</a></b>";
+
+            email.Message = builder.HtmlBody;
+            email.Subject = "Activate Your Account";
+
+            try
+            {
+                await _emailService.SendEmailAsync(email);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #endregion
+
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)
         {
@@ -223,14 +250,10 @@ namespace LmsGateway.Web.Controllers
                 else
                 {
                     message += "You must agree to the terms and condition\n";
-
-                    //ModelState.AddModelError(nameof(model.IAgree), "You must agree to the terms and condition");
                 }
             }
 
             return Json(message);
-
-            //return View(model);
         }
 
         [AllowAnonymous]
@@ -262,35 +285,7 @@ namespace LmsGateway.Web.Controllers
             return await Task.FromResult(View(loginModel));
         }
 
-        private async Task SendMail(User user, string callbackUrl)
-        {
-            //EmailServer emailServer = new EmailServer("Mail Admin", "info@bluehorizonng.com", "password", "mail.bluehorizonng.com");
-            //EmailServer emailServer = new EmailServer("Mail Admin", "info@bluehorizonng.com", "password", "mail.bluehorizonng.com", port: 587);
-
-            Email email = new Email();
-            email.ToEmailAddress = new EmailAddress() { Name = user.Name, Email = user.Email };
-            email.FromEmailAddress = new EmailAddress() { Name = _emailServer.Name, Email = _emailServer.Username };
-
-            //email.FromEmailAddress = new EmailAddress() { Name = "Isioma", Email = "linkdanex@yahoo.co.uk" };
-            //email.ToEmailAddress = new EmailAddress() { Name = emailServer.Name, Email = emailServer.Username };
-            //email.Message = $"Click {callBackUrl} to activate your account";
-
-            var builder = new MimeKit.BodyBuilder();
-            builder.HtmlBody = $"Please confirm your account by clicking <a href='{callbackUrl}'>here</a>";
-
-            email.Message = builder.HtmlBody;
-            email.Subject = "Activate Your Account";
-
-            try
-            {
-                //IEmailService emailService = new EmailService(emailServer);
-                await _emailService.SendEmailAsync(email);
-            }
-            catch (Exception ex)
-            {
-                string error = ex.ToString();
-            }
-        }
+        
 
 
 

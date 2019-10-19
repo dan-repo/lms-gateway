@@ -1,6 +1,7 @@
 ﻿using LmsGateway.Core.Infrastructure;
 using LmsGateway.Core.Notifications;
 using MailKit.Net.Smtp;
+using MailKit.Security;
 using MimeKit;
 using System;
 using System.Threading.Tasks;
@@ -34,15 +35,23 @@ namespace LmsGateway.Services.Notifications
             {
                 using (SmtpClient mailer = new SmtpClient())
                 {
-                    //mailer.Connect("mail.bluehorizonng.com", 587, false);
-                    //mailer.Connect("mail.bluehorizonng.com", 25, false);
+                    mailer.Connect(_emailServer.Host, _emailServer.Port, SecureSocketOptions.StartTlsWhenAvailable);
+                    mailer.AuthenticationMechanisms.Remove("XOAUTH2");
 
-                    //mailer.Authenticate("info@bluehorizonng.com", "password");
-
-                    mailer.Connect(_emailServer.Host, _emailServer.Port, _emailServer.UseSsl);
                     mailer.Authenticate(_emailServer.Username, _emailServer.Password);
                     await mailer.SendAsync(message);
                     await mailer.DisconnectAsync(true);
+
+
+
+
+                    ////mailer.Connect("mail.bluehorizonng.com", 587, false);
+                    ////mailer.Connect("mail.bluehorizonng.com", 25, false);
+
+                    //mailer.Connect(_emailServer.Host, _emailServer.Port, _emailServer.UseSsl);
+                    //mailer.Authenticate(_emailServer.Username, _emailServer.Password);
+                    //await mailer.SendAsync(message);
+                    //await mailer.DisconnectAsync(true);
                 }
             }
             catch (Exception)

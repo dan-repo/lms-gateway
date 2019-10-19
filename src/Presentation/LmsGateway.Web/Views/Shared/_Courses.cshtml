@@ -1,0 +1,34 @@
+﻿@model List<CourseModel>
+
+<div class="page ">
+    <div class="container page__container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="fixed-instructor-dashboard.html">Student</a></li>
+            <li class="breadcrumb-item active">Courses</li>
+        </ol>
+
+        <div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+            <div class="flex mb-2 mb-sm-0">
+                <h1 class="h2">Business Administration</h1>
+            </div>
+            <a asp-action="PaymentInfo" asp-controller="Paystack" asp-area="" target="_blank" class="btn btn-success">Pay</a>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-md-8">
+                @await Html.PartialAsync("_courses/_details", Model)
+            </div>
+            <div class="col-md-4">
+                @await Html.PartialAsync("_courses/_main")
+            </div>
+        </div>
+    </div>
+
+    @*<div class="container page__container">
+            <div class="footer">
+                Copyright &copy; 2016 - <a href="http://themeforest.net/item/learnplus-learning-management-application/15287372?ref=mosaicpro">Purchase LearnPlus</a>
+            </div>
+        </div>*@
+</div>

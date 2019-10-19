@@ -1,0 +1,71 @@
+﻿@model IEnumerable<EventModel>
+
+@{
+    ViewData["Title"] = "event";
+}
+
+<div class="page ">
+    <div class="container page__container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="fixed-instructor-dashboard.html">Admin</a></li>
+            <li class="breadcrumb-item active">Events</li>
+        </ol>
+
+        @*<div class="d-flex flex-column flex-sm-row flex-wrap mb-headings align-items-start align-items-sm-center">
+            <div class="flex mb-2 mb-sm-0">
+                <h1 class="h2">Business Administration</h1>
+            </div>
+            <a asp-action="PaymentInfo" asp-controller="Paystack" asp-area="" target="_blank" class="btn btn-success">Pay</a>
+        </div>*@
+
+        @*<hr />*@
+
+        <div class="row">
+            <div class="col-md-4">
+                @await Html.PartialAsync("_events/_sideBar", Model)
+            </div>
+            <div class="col-md-8">
+                <div id="data"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!-- Start Breadcrumbs -->
+@*<section class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Event</h2>
+                <ul class="bread-list">
+                    <li><a href="index.html">Home<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active"><a href="#">Events</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>*@
+<!--/ End Breadcrumbs -->
+
+
+<!-- Events -->
+@*<section class="events single section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-12">
+                @await Html.PartialAsync("_events/_sideBar", Model)
+            </div>
+            <div class="col-lg-8 col-12">
+                <div id="data"></div>
+            </div>
+
+        </div>
+    </div>
+
+</section>*@
+<!--/ End Events -->
