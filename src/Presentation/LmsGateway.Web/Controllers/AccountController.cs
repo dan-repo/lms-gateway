@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using LmsGateway.Domain;
 using Microsoft.AspNetCore.Authorization;
 using LmsGateway.Web.Models;
 using LmsGateway.Core.Notifications;
 using LmsGateway.Core.Extensions;
 using LmsGateway.Core.Models;
+using LmsGateway.Domain.Users;
 
 namespace LmsGateway.Web.Controllers
 {

@@ -11,6 +11,9 @@ namespace LmsGateway.Domain.Registrations
         public string StudentId { get; set; }
         public int SessionId { get; set; }
         public int SemesterId { get; set; }
+        public string PaymentMethod { get; set; }
+        public decimal AmountPaid { get; set; }
+        public DateTime RegisteredOn { get; set; }
 
         public Session Session { get; set; }
         public Semester Semester { get; set; }

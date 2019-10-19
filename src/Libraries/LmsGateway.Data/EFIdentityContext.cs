@@ -7,6 +7,7 @@ using LmsGateway.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using LmsGateway.Data.Mappings;
+using LmsGateway.Domain.Users;
 
 namespace LmsGateway.Data
 {

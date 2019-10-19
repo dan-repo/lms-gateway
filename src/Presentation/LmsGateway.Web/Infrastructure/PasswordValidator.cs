@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using LmsGateway.Domain;
 using Microsoft.AspNetCore.Identity;
+using LmsGateway.Domain.Users;
 
 namespace LmsGateway.Web.Infrastructure
 {

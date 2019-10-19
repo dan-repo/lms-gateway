@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Moq;
 using Xunit;
 using Microsoft.AspNetCore.Identity;
-using LmsGateway.Domain;
 using LmsGateway.Web.Models;
 using LmsGateway.Web.Controllers;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
+using LmsGateway.Domain.Users;
 
 namespace LmsGateway.Web.Tests
 {
