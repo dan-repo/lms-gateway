@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using LmsGateway.Data;
-using LmsGateway.Domain;
 
 namespace LmsGateway.Data.Migrations.EFIdentity
 {
@@ -17,7 +16,7 @@ namespace LmsGateway.Data.Migrations.EFIdentity
                 .HasAnnotation("ProductVersion", "1.1.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("LmsGateway.Domain.User", b =>
+            modelBuilder.Entity("LmsGateway.Domain.Users.User", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -28,6 +27,12 @@ namespace LmsGateway.Data.Migrations.EFIdentity
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnName("Concurrency_Stamp");
+
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnName("Created_On");
+
+                    b.Property<DateTime?>("DateVerified")
+                        .HasColumnName("Date_Verified");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
@@ -59,6 +64,9 @@ namespace LmsGateway.Data.Migrations.EFIdentity
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnName("Phone_Number_Confirmed");
+
+                    b.Property<string>("RegNo")
+                        .HasColumnName("Reg_No");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnName("Security_Stamp");
@@ -203,7 +211,7 @@ namespace LmsGateway.Data.Migrations.EFIdentity
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("LmsGateway.Domain.User")
+                    b.HasOne("LmsGateway.Domain.Users.User")
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -211,7 +219,7 @@ namespace LmsGateway.Data.Migrations.EFIdentity
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("LmsGateway.Domain.User")
+                    b.HasOne("LmsGateway.Domain.Users.User")
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -224,7 +232,7 @@ namespace LmsGateway.Data.Migrations.EFIdentity
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("LmsGateway.Domain.User")
+                    b.HasOne("LmsGateway.Domain.Users.User")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

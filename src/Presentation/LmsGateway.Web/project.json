@@ -32,9 +32,12 @@
     "Microsoft.AspNetCore.Mvc.Core": "1.0.1",
     "Microsoft.AspNetCore.Mvc.Abstractions": "1.0.1",
     "Microsoft.AspNetCore.Session": "1.0.0",
+    "Microsoft.AspNetCore.ResponseCompression": "1.0.0",
     "Microsoft.Extensions.Caching.Memory": "1.1.1",
-    "Microsoft.AspNetCore.Http.Extensions": "1.0.0",
-    "LmsGateway.Web.Framework": "1.0.0-*"
+    "Microsoft.AspNetCore.Http.Extensions": "1.1.0",
+    "LmsGateway.Web.Framework": "1.0.0-*",
+    "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
+    "LmsGateway.Paystack": "1.0.0-*"
   },
 
   "tools": {

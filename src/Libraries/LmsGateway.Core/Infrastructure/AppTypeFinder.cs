@@ -15,7 +15,9 @@ namespace LmsGateway.Core.Infrastructure
             {
                 Assembly.Load(new AssemblyName("LmsGateway.Data")),
                 Assembly.Load(new AssemblyName("LmsGateway.Domain")),
-                Assembly.Load(new AssemblyName("LmsGateway.Core"))
+                Assembly.Load(new AssemblyName("LmsGateway.Core")),
+                Assembly.Load(new AssemblyName("LmsGateway.Paystack")),
+                Assembly.Load(new AssemblyName("LmsGateway.Web.Framework"))
             };
 
             return assemblies;

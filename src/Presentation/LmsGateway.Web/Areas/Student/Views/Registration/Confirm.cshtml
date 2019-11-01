@@ -1,0 +1,161 @@
+﻿@model RegistrationModel
+@{
+    ViewData["Title"] = "confirm";
+}
+
+<div class="page ">
+    <div class="container page__container p-0">
+        <div class="row m-0">
+            <div class="col-lg-9">
+                <div class="col-lg container-fluid page__container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="fixed-student-dashboard.html">Home</a></li>
+                        <li class="breadcrumb-item">Registration</li>
+                        <li class="breadcrumb-item active">Confirm</li>
+                    </ol>
+
+                    <h1 class="h2">Confirm</h1>
+
+                    <form asp-action="Confirm" asp-controller="Registration" method="post" asp-antiforgery="true">
+                        @await Component.InvokeAsync("TransactionReference")
+
+                        <div class="card">
+                            <div class="list-group list-group-fit">
+                                <div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <label class="col-form-label form-label col-sm-3">student</label>
+                                        <div class="col-sm-9 d-flex align-items-center">
+                                            <div class="flex">
+                                                @Model.Student.Name
+                                                <input type="hidden" asp-for="Student.Id" />
+                                                <input type="hidden" asp-for="Student.Name" />
+                                                <input type="hidden" asp-for="Currency" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <label class="col-form-label form-label col-sm-3">period</label>
+                                        <div class="col-sm-9 d-flex align-items-center">
+                                            <div class="flex">
+                                                @*<select class="form-control" asp-for="Period" asp-items="Model.Periods"></select>*@
+
+                                                <input type="hidden" asp-for="Period" />
+                                                <div>@Model.Period</div>
+                                                <div>
+                                                    <span asp-validation-for="Period" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <label class="col-form-label form-label col-sm-3">fee</label>
+                                        <div class="col-sm-9 d-flex align-items-center">
+                                            <div class="flex">
+                                                @*<select class="form-control" asp-for="Fee" asp-items="Model.Fees"></select>*@
+                                                <div>@Model.Fee</div>
+                                                <input type="hidden" asp-for="Fee" />
+                                                <div>
+                                                    <span asp-validation-for="Fee" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <label class="col-form-label form-label col-sm-3">amount payable</label>
+                                        <div class="col-sm-9 d-flex align-items-center">
+                                            <div class="flex">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Access Charge</td>
+                                                            <td style="font-weight:bold;">
+                                                                - @Model.AccessCharge
+                                                                <input type="hidden" asp-for="AccessCharge" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Registration Fee</td>
+                                                            <td style="font-weight:bold;">
+                                                                - @Model.RegistrationFee
+                                                                <input type="hidden" asp-for="RegistrationFee" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Amount Payable</td>
+                                                            <td style="font-weight:bold;">
+                                                                - @Model.AmountPayable
+                                                                <input type="hidden" asp-for="AmountPayable" />
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*<div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <div class="col-form-label form-label col-sm-3">
+                                            <label>Pay method</label>
+                                        </div>
+
+                                        <div class="col-sm-9 d-flex align-items-center">
+                                            <div class="flex">
+                                                @await Component.InvokeAsync("PaymentInfo")
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+
+                                <div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <label class="col-form-label form-label col-sm-3"></label>
+                                        <div class="col-sm-9">
+                                            <button type="submit" class="btn btn-success">Register</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <div id="page-nav" class="col-lg-auto page-nav">
+                <div data-perfect-scrollbar>
+                    <div class="page-section pt-lg-32pt">
+                        <ul class="nav page-nav__menu">
+                            <li class="nav-item">
+                                <a id="subscription" href="#" class="nav-link">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="ug-account" href="#" class="nav-link active">Confirm</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="billing" href="#" class="nav-link">Completed</a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

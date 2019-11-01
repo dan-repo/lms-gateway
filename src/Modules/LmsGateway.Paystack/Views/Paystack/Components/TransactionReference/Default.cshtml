@@ -1,0 +1,16 @@
+﻿@model ConfigurationModel
+@{
+    Layout = "";
+}
+
+@if (Model != null && Model.TransactionReference.HasValue())
+{
+    <input type="hidden" asp-for="TransactionReference" />
+    <div class="alert bg-info text-white border-0" role="alert">
+        <p>
+            Please note this <strong style="font-weight:bold;">Transaction Reference No:</strong> <strong class="text-danger" style="font-size:22px;font-weight:bold;">@Model.TransactionReference</strong>, because you will need it to track your payment.
+        </p>
+    </div>
+}
+
+

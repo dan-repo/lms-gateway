@@ -4,6 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
+using LmsGateway.Domain.Configuration;
+using LmsGateway.Data.Mappings.Configuration;
+using LmsGateway.Data.Mappings.Registrations;
+using LmsGateway.Domain.Registrations;
+using LmsGateway.Domain.Medias;
+using LmsGateway.Data.Mappings.Medias;
+using LmsGateway.Core.Data;
 
 namespace LmsGateway.Data
 {
@@ -17,10 +24,24 @@ namespace LmsGateway.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Media>(x => new MediaMap(x));
-            //modelBuilder.Entity<Gallery>(x => new GalleryMap(x));
-            //modelBuilder.Entity<Event>(x => new EventMap(x));
-
+            modelBuilder.Entity<Setting>(x => new SettingMap(x));
+            modelBuilder.Entity<Course>(x => new CourseMap(x));
+            modelBuilder.Entity<Department>(x => new DepartmentMap(x));
+            modelBuilder.Entity<Level>(x => new LevelMap(x));
+            modelBuilder.Entity<Programme>(x => new ProgrammeMap(x));
+            modelBuilder.Entity<RegistrationFee>(x => new RegistrationFeeMap(x));
+            modelBuilder.Entity<Registration>(x => new RegistrationMap(x));
+            modelBuilder.Entity<RegistrationDetail>(x => new RegistrationDetailMap(x));
+            modelBuilder.Entity<RegistrationPeriod>(x => new RegistrationPeriodMap(x));
+            modelBuilder.Entity<Semester>(x => new SemesterMap(x));
+            modelBuilder.Entity<Session>(x => new SessionMap(x));
+            modelBuilder.Entity<AdmissionList>(x => new AdmissionListMap(x));
+            modelBuilder.Entity<AdmissionListDetail>(x => new AdmissionListDetailMap(x));
+            modelBuilder.Entity<Faculty>(x => new FacultyMap(x));
+            modelBuilder.Entity<Media>(x => new MediaMap(x));
+            modelBuilder.Entity<Student>(x => new StudentMap(x));
+            modelBuilder.Entity<StudentLevel>(x => new StudentLevelMap(x));
+            
             base.OnModelCreating(modelBuilder);
         }
 

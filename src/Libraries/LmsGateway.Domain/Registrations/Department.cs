@@ -7,8 +7,12 @@ namespace LmsGateway.Domain.Registrations
 {
     public class Department : BaseEntity
     {
-        public int Name { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
+
+        public int FacultyId { get; set; }
+
+        public Faculty Faculty { get; set; }
     }
 
 

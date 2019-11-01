@@ -158,8 +158,8 @@ namespace LmsGateway.Web.Controllers
                         IdentityResult result = await _userManager.CreateAsync(user, model.Password);
                         if (result.Succeeded)
                         {
-                            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                            var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                            string code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                            string callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
 
                             await SendMail(user, callbackUrl);
 

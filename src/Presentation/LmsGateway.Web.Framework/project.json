@@ -3,7 +3,9 @@
 
   "dependencies": {
     "LmsGateway.Core": "1.0.0-*",
+    "LmsGateway.Data": "1.0.0-*",
     "LmsGateway.Domain": "1.0.0-*",
+    "LmsGateway.Services": "1.0.0-*",
     "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.1",
     "NETStandard.Library": "1.6.1"
   },

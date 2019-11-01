@@ -26,7 +26,10 @@ namespace LmsGateway.Web.Controllers
             _emailService = emailService;
         }
 
-        public async Task<IActionResult> Index() => await Task.FromResult(View());
+        public async Task<IActionResult> Index()
+        {
+            return await Task.FromResult(View());
+        }
        
         public async Task<IActionResult> About() => await Task.FromResult(View());
        
@@ -65,6 +68,57 @@ namespace LmsGateway.Web.Controllers
 
             return Json(message);
         }
+
+        //public async Task<Paystack.Models.PaystackTransaction> MakePayment()
+        //{
+        //    try
+        //    {
+        //        Microsoft.AspNetCore.Http.HttpContext httpContext = null;
+        //        Paystack.Settings.PaystackSetting paystackSetting = null;
+
+        //        string reference = processPaymentRequest.TransactionReference; //httpContext.Session[TransactionRef] as string;
+        //        string apiEndPoint = paystackSetting.InitializeTransactionEndPoint;
+        //        string callbackUrl = GetRedirectUrl(httpContext.Request, "Details", "Order", processPaymentRequest.Registration.Id);
+        //        //OrderTotal = processPaymentRequest.Registration.Details.Sum(x => x.AmountPaid); // Math.Truncate(processPaymentRequest.Order.OrderTotal * currency.LeastValueUnitMultiplier);
+
+        //        RestRequest request = new RestRequest(apiEndPoint, Method.POST);
+        //        request.AddHeader(paystackSetting.APIAcceptHeaderKey, paystackSetting.APIAcceptHeaderValue);
+        //        request.AddHeader(paystackSetting.APIAuthorizationHeaderKey, paystackSetting.APIAuthorizationHeaderValue + " " + paystackSetting.Key);
+        //        request.AddParameter(paystackSetting.APIReferenceParameterKey, reference);
+        //        request.AddParameter(paystackSetting.APIAmountParameterKey, 125200);
+        //        request.AddParameter(paystackSetting.APICallbackUrlParameterKey, callbackUrl);
+
+
+
+        //        //request.AddParameter(paystackSetting.APIEmailParameterKey, postProcessPaymentRequest.Order.Customer.BillingAddress.Email);
+
+        //        //Dictionary<string, List<CustomField>> metadata = new Dictionary<string, List<CustomField>>();
+        //        //List<CustomField> customfields = BuildCustomField(postProcessPaymentRequest.Registration.BillingAddress);
+        //        //metadata.Add(paystackSetting.APICustomFieldsParameterKey, customfields);
+
+        //        //var javaScriptSerializer = new JavaScriptSerializer();
+        //        //var serializedMetadata = javaScriptSerializer.Serialize(metadata);
+        //        //request.AddParameter(paystackSetting.APIMetaDataParameterKey, serializedMetadata);
+
+        //        //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+        //        //RestClient client = new RestClient(paystackSetting.ApiBaseUrl);
+        //        //IRestResponse response = client.Execute(request);
+        //        //if (response.ErrorException != null)
+        //        //{
+        //        //    throw response.ErrorException;
+        //        //}
+
+        //        //return JsonConvert.DeserializeObject<PaystackTransaction>(response.Content);
+
+
+
+        //        return await Post(paystackSetting, request);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
 
 
 

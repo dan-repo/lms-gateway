@@ -7,6 +7,7 @@ namespace LmsGateway.Domain.Configuration
 {
     public class Setting : BaseEntity
     {
+        public Setting() { }
         public Setting(string name, string value)
         {
             Name = name;

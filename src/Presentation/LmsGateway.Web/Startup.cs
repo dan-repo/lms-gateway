@@ -9,7 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using LmsGateway.Core.Infrastructure;
-using LmsGateway.Web.Infrastructure.Extensions;
+using LmsGateway.Web.Extensions;
+using LmsGateway.Web.Framework.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using LmsGateway.Core.Notifications;
 using LmsGateway.Services.Notifications;
@@ -18,13 +19,16 @@ using System.Reflection;
 using System.Runtime.Loader;
 using LmsGateway.Web.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Razor;
+using LmsGateway.Core.Configuration;
+using LmsGateway.Services.Configuration;
+using Microsoft.AspNetCore.ResponseCompression;
+using System.IO.Compression;
 
 namespace LmsGateway.Web
 {
     public class Startup
     {
         private readonly IHostingEnvironment _hostingEnvironment;
-        private readonly IList<PluginInfo> plugins = new List<PluginInfo>();
 
         public Startup(IHostingEnvironment env)
         {
@@ -43,8 +47,6 @@ namespace LmsGateway.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            LoadInstalledPlugins();
-
             EmailServer emailServer = GetEmailServer();
 
             IDictionary<string, string> connectionStrings = new Dictionary<string, string>()
@@ -55,9 +57,16 @@ namespace LmsGateway.Web
 
             // Add application services.
             services.AddTransient<ITypeFinder, AppTypeFinder>();
-            services.RegisterCustomServices(connectionStrings);
             services.Add(new ServiceDescriptor(typeof(EmailServer), emailServer));
-            services.AddTransient<IEmailService, EmailService>();
+            services.AddOtherServices(connectionStrings);
+
+            services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
+            services.AddResponseCompression(options =>
+            {
+                // options.EnableForHttps = true;
+                // options.MimeTypes = new string[] { "multipart/form-data", "application/pdf" };
+                options.Providers.Add<GzipCompressionProvider>();
+            });
 
             //if (!_hostingEnvironment.IsDevelopment())
             //{
@@ -69,30 +78,41 @@ namespace LmsGateway.Web
 
             services.Configure<RazorViewEngineOptions>(options =>
             {
-                options.ViewLocationExpanders.Add(new PluginViewLocationExpander());
+                options.ViewLocationExpanders.Add(new ModuleViewLocationExpander());
             });
 
 
             // Add framework services.
-            services.AddMvc();
-            services.AddMemoryCache();
-            services.AddSession();
+            //services.AddMvc();
+
             
+            services.AddMvc().AddMvcOptions(options =>
+            {
+                options.Filters.AddService(typeof(Paystack.Filters.PaystackRegistrationConfirmFilter));
+                options.Filters.AddService(typeof(Paystack.Filters.PaystackRegistrationCompletedFilter));
+            });
+            services.AddMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
+
+            //services.AddPluginDependencies(plugins, connectionStrings);
 
             //var mvcBuilder = services.AddMvc();
             //foreach (var plugin in plugins)
             //{
             //    // Register controller from modules
-            //    mvcBuilder.AddApplicationPart(plugin.Assembly);
+            //    mvcBuilder.AddApplicationPart(plugin.Assembly).AddControllersAsServices();
 
-            //    // Register dependency in modules
-            //    var dependencyRegistrar = plugin.Assembly.GetTypes().Where(x => typeof(IDependencyRegistrar).IsAssignableFrom(x)).FirstOrDefault();
-            //    if (dependencyRegistrar != null && dependencyRegistrar != typeof(IDependencyRegistrar))
-            //    {
-            //        var dependencyRegistrarInstance = (IDependencyRegistrar)Activator.CreateInstance(dependencyRegistrar);
-            //        dependencyRegistrarInstance.Register(services);
-            //    }
+            //    //// Register dependency in modules
+            //    //var dependencyRegistrar = plugin.Assembly.GetTypes().Where(x => typeof(IDependencyRegistrar).IsAssignableFrom(x)).FirstOrDefault();
+            //    //if (dependencyRegistrar != null && dependencyRegistrar != typeof(IDependencyRegistrar))
+            //    //{
+            //    //    var dependencyRegistrarInstance = (IDependencyRegistrar)Activator.CreateInstance(dependencyRegistrar);
+            //    //    dependencyRegistrarInstance.Register(services, connectionStrings);
+            //    //}
             //}
+            
         }
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -111,26 +131,12 @@ namespace LmsGateway.Web
                 app.UseExceptionHandler("/Home/Error");
             }
 
+
+            app.UseResponseCompression();
+
             app.UseStaticFiles();
+            app.UseModuleStaticFiles(env);
             app.UseIdentity();
-
-
-            // Serving static file for modules
-            foreach (var plugin in plugins)
-            {
-                var wwwrootDir = new DirectoryInfo(Path.Combine(plugin.Path, "wwwroot"));
-                if (!wwwrootDir.Exists)
-                {
-                    continue;
-                }
-
-                app.UseStaticFiles(new StaticFileOptions()
-                {
-                    FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(wwwrootDir.FullName),
-                    RequestPath = new Microsoft.AspNetCore.Http.PathString("/" + plugin.SortName)
-                });
-            }
-
             app.UseSession();
             app.UseMvc(routes =>
             {
@@ -157,42 +163,7 @@ namespace LmsGateway.Web
             return new EmailServer(name, username, password, host, port, useSsl);
         }
 
-        private void LoadInstalledPlugins()
-        {
-            var pluginRootFolder = _hostingEnvironment.ContentRootFileProvider.GetDirectoryContents("/Plugins");
-            foreach (var pluginFolder in pluginRootFolder.Where(x => x.IsDirectory))
-            {
-                var binFolder = new DirectoryInfo(Path.Combine(pluginFolder.PhysicalPath, "bin"));
-                if (!binFolder.Exists)
-                {
-                    continue;
-                }
-
-                foreach (var file in binFolder.GetFileSystemInfos("*.dll", SearchOption.AllDirectories))
-                {
-                    Assembly assembly;
-                    try
-                    {
-                        assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(file.FullName);
-                    }
-                    catch (FileLoadException ex)
-                    {
-                        if (ex.Message == "Assembly with same name is already loaded")
-                        {
-                            continue;
-                        }
-                        throw;
-                    }
-
-                    if (assembly.FullName.Contains(pluginFolder.Name))
-                    {
-                        plugins.Add(new PluginInfo { Name = pluginFolder.Name, Assembly = assembly, Path = pluginFolder.PhysicalPath });
-                    }
-                }
-            }
-
-
-        }
+       
 
 
 

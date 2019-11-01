@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Xunit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting.Internal;
-using LmsGateway.Web.Infrastructure.Extensions;
+using LmsGateway.Web.Extensions;
 using System.IO;
 using LmsGateway.Core.Infrastructure;
 using LmsGateway.Data;
+using LmsGateway.Web.Framework.Extensions;
 
 namespace LmsGateway.Web.Tests
 {
@@ -31,7 +32,7 @@ namespace LmsGateway.Web.Tests
                 ["Data"] = "Data:ConnectionString"
             };
 
-            services.RegisterCustomServices(connectionStrings);
+            services.AddOtherServices(connectionStrings);
 
             IServiceProvider serviceProvider = services.BuildServiceProvider();
             var identityContext = serviceProvider.GetService<EFIdentityContext>();
@@ -39,25 +40,25 @@ namespace LmsGateway.Web.Tests
             
             Assert.NotNull(ServiceCollectionExtensions.Registrars);
             Assert.True(ServiceCollectionExtensions.Registrars.Count > 0);
-            Assert.Equal(2, ServiceCollectionExtensions.Registrars.Count);
+            Assert.Equal(3, ServiceCollectionExtensions.Registrars.Count);
             Assert.NotNull(identityContext);
             Assert.NotNull(dataContext);
            
         }
 
-        [Fact]
-        public void CanGegistrars()
-        {
-            HostingEnvironment env = new HostingEnvironment();
-            env.ContentRootPath = Directory.GetCurrentDirectory();
-            env.EnvironmentName = "Production";
+        //[Fact]
+        //public void CanGegistrars()
+        //{
+        //    HostingEnvironment env = new HostingEnvironment();
+        //    env.ContentRootPath = Directory.GetCurrentDirectory();
+        //    env.EnvironmentName = "Production";
 
-            Startup startup = new Startup(env);
-            ServiceCollection sc = new ServiceCollection();
-            startup.ConfigureServices(sc);
+        //    Startup startup = new Startup(env);
+        //    ServiceCollection sc = new ServiceCollection();
+        //    startup.ConfigureServices(sc);
             
 
-        }
+        //}
 
         //private IServiceCollection ServiceProviderFactory()
         //{

@@ -1,0 +1,66 @@
+﻿@model PaymentInfoModel
+
+@{
+    Layout = "";
+}
+
+@Html.Hidden("PaystackPaymentType", "PaymentType")
+
+<div style="margin-bottom:10px;"><img src="@Url.Content(Model.IconUrl)" style="height:20px;" /></div>
+<div class="opt-form">
+    <div class="form-group row">
+        @if (Model.SupportedCurrencies != null && Model.SupportedCurrencies.Count > 0)
+        {
+            <div class="col-md-12">
+                @Html.DropDownListFor(model => model.Currency, Model.Currencies, new { @class = "form-control noskin" })
+            </div>
+        }
+        else
+        {
+            <div class="alert bg-danger text-white border-0" role="alert">
+                <strong>@ViewBag.CurrencyLoadMessage</strong>
+            </div>
+        }
+
+
+        @*@if (Model.SupportedCurrencies != null && Model.SupportedCurrencies.Count > 0)
+        {
+            @Html.LabelFor(model => model.Currencies, new { @class = "col-md-3 col-form-label required" })
+            <div class="col-md-9">
+                @Html.DropDownListFor(model => model.Currency, Model.Currencies, new { @class = "form-control noskin" })
+            </div>
+        }
+        else
+        {
+            <div class="alert bg-danger text-white border-0" role="alert">
+                <strong>@ViewBag.CurrencyLoadMessage</strong>
+            </div>
+        }*@
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-12">
+            <span>
+                @{
+                    if (Model != null && Model.CardIconUrls != null && Model.CardIconUrls.Count > 0)
+                    {
+                        foreach (string iconUrl in Model.CardIconUrls)
+                        {
+                            <img class="icon img-responsive" src="@Url.Content(iconUrl)" />
+                        }
+                    }
+                }
+            </span>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+@*<div style="margin:50px;">
+        Payment info
+
+        <div><img src="images/logo.png" alt="icon" /></div>
+    </div>*@

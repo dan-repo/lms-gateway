@@ -1,0 +1,156 @@
+﻿@model RegistrationModel
+@{
+    ViewData["Title"] = "invoice";
+}
+
+<div class="page ">
+    <div class="container page__container p-0">
+        <div class="row m-0">
+            <div class="col-lg-9">
+                <div class="col-lg container-fluid page__container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item">Registration</li>
+                        <li class="breadcrumb-item active">Invoice</li>
+                    </ol>
+
+                    @*<h1 class="h2">Invoice</h1>*@
+
+                    @await Component.InvokeAsync("GatewayHappyResponse")
+
+                    @if (Model.PaymentSuccessful)
+                    {
+                        <div id="invoice">
+                            <div class="card">
+                                <div class="card-header media align-items-center">
+                                    <div class="media-body">
+                                        <h1 class="card-title h2">Invoice</h1>
+                                        <div class="card-subtitle">10003578 - 12 Jan 2019</div>
+                                    </div>
+                                    <div class="media-right d-flex align-items-center">
+                                        <a href="javascript:window.print()" class="btn btn-flush text-muted d-print-none mr-3"><i class="material-icons font-size-24pt">print</i></a>
+
+                                        @*<a href="student-account-billing-payment-information.html" class="btn btn-success d-print-none">Pay</a>*@
+
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p class="text-black-70 m-0"><strong>Prepared for</strong></p>
+                                            <h2>Isioma Queen</h2>
+                                            <div class="text-black-50">
+                                                @User.Identity.Name
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="text-black-70 m-0"><strong>Prepared by</strong></p>
+                                            <h2>ESUT LMS</h2>
+                                            <div class="text-black-50">
+                                                PMB 01660. Agbani, Enugu State, Nigeria
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card table-responsive">
+                            <table class="table mb-0 table--elevated">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th class="border-top-0">Description</th>
+                                        <th class="border-top-0 text-right" style="width: 120px;">Amount (N)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                @*<a href="student-view-course.html" class="avatar avatar-4by3 avatar-sm mr-3">
+                                                        <img src="assets/images/gulp.png" alt="Learn Angular Fundamentals" class="avatar-img rounded">
+                                                    </a>*@
+                                                <div class="flex">
+                                                    <a href="student-view-course.html" class="text-body">
+                                                        <strong>Year 1 - Business Administration - Undergraduate Programme</strong>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-right"><strong>120, 000.00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="mb-1"><strong>Access Charge</strong></p>
+                                            <p class="text-black-50 mb-0 small">For 2019/2020 Academic Session</p>
+                                        </td>
+                                        <td class="text-right"><strong>5,000.00</strong></td>
+                                    </tr>
+                                    @*<tr>
+                                            <td><strong>Credit discount</strong></td>
+                                            <td class="text-right"><strong>-&dollar;5.00 USD</strong></td>
+                                        </tr>*@
+                                </tbody>
+                            </table>
+
+                            <table class="table mb-0">
+                                <tfoot>
+                                    @*<tr>
+                                            <td class="text-right text-black-70"><strong>Subtotal</strong></td>
+                                            <td style="width: 120px;" class="text-right"><strong>125, 000.00</strong></td>
+                                        </tr>*@
+                                    <tr>
+                                        <td class="text-right text-black-70"><strong>Total</strong></td>
+                                        <td style="width: 120px;" class="text-right"><strong>125, 000.00</strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="px-16pt mb-4">
+                            <p class="text-black-70 mb-8pt"><strong>Invoice paid</strong></p>
+                            <div class="d-flex">
+                                @*<div class="mr-3">
+                                        <img src="assets/images/visa.svg" alt="visa" width="38" />
+                                    </div>*@
+                                <div class="flex text-black-50">
+                                    @*brand: visa
+                                        last4: 4081
+                                        transaction-date: 2019-10-31 05:50:53.0000000*@
+
+                                    @*You don’t need to take further action. Your credit card Visa ending in 2819 has been charged on January 12, 2019.*@
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger" asp-action="index" asp-controller="registration" asp-area="student">Retry</a>
+                    }
+
+                </div>
+            </div>
+
+            <div id="page-nav" class="col-lg-auto page-nav">
+                <div data-perfect-scrollbar>
+                    <div class="page-section pt-lg-32pt">
+                        <ul class="nav page-nav__menu">
+                            <li class="nav-item">
+                                <a id="subscription" href="#" class="nav-link">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="ug-account" href="#" class="nav-link ">Confirm</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="billing" href="#" class="nav-link active">Completed</a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

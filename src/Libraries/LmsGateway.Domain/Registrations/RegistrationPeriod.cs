@@ -15,8 +15,10 @@ namespace LmsGateway.Domain.Registrations
         public int SessionId { get; set; }
         public int SemesterId { get; set; }
 
-        public Session Session { get; set; }
-        public Semester Semester { get; set; }
+        public virtual Session Session { get; set; }
+        public virtual Semester Semester { get; set; }
+
+        public List<RegistrationFee> RegistrationFees { get; set; }
 
     }
 

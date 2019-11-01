@@ -11,6 +11,8 @@ namespace LmsGateway.Domain.Registrations
         public string Name { get; set; }
         public int Unit { get; set; }
         public bool IsOptional { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public string CreatedBy { get; set; }
 
         public int LevelId { get; set; }
         public int SemesterId { get; set; }

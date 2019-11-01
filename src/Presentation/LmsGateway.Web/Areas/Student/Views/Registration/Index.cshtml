@@ -1,0 +1,222 @@
+﻿@model RegistrationModel
+@{
+    ViewData["Title"] = "registration";
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $("#Period").change(function () {
+                $("#Fee").empty();
+
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    url: '@Url.Action("GetRegistrationFeeByPeriodId")',
+                    data: { periodId: $("#Period").val() },
+                    success: function (fees) {
+                        $("#Fee").append('<option value="' + '' + '">Select fee</option>');
+
+                        $.each(fees, function (i, fee) {
+                            $("#Fee").append('<option value="' + fee.value + '">' + fee.text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve fees. ' + ex);
+                    }
+                });
+
+                return false;
+            })
+            
+            $("#Fee").change(function () {
+                ClearControls();
+
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    url: '@Url.Action("GetRegistrationFeeById")',
+                    data: { id: $("#Fee").val() },
+                    success: function (fee) {
+                        SetControls(fee);
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve Registration Fee. ' + ex);
+                    }
+                });
+
+                return false;
+            })
+
+            function ClearControls(){
+                $("#AccessCharge").val("");
+                $("#RegistrationFee").val("");
+                $("#AmountPayable").val("");
+
+                $("#hfAccessCharge").val("");
+                $("#hfRegistrationFee").val("");
+                $("#hfAmountPayable").val("");
+            
+            }
+            function SetControls(fee) {
+                $("#AccessCharge").val(fee.accessCharge);
+                $("#RegistrationFee").val(fee.registrationFee);
+                $("#AmountPayable").val(fee.amountPayable);
+
+                $("#hfAccessCharge").val(fee.accessCharge);
+                $("#hfRegistrationFee").val(fee.registrationFee);
+                $("#hfAmountPayable").val(fee.amountPayable);
+            }
+
+        })
+    </script>
+}
+
+<div class="page ">
+    <div class="container page__container p-0">
+        <div class="row m-0">
+            <div class="col-lg-9">
+                <div class="col-lg container-fluid page__container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="fixed-student-dashboard.html">Home</a></li>
+                        <li class="breadcrumb-item active">Registration</li>
+                    </ol>
+
+                    <h1 class="h2">Registration</h1>
+
+                    <form asp-action="Index" asp-controller="Registration" method="post" asp-antiforgery="true">
+
+                        <div class="card">
+                            <div class="list-group list-group-fit">
+                                <div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <label class="col-form-label form-label col-sm-3">student</label>
+                                        <div class="col-sm-9 d-flex align-items-center">
+                                            <div class="flex">
+                                                @Model.Student.Name
+                                                <input type="hidden" asp-for="Student.Id" />
+                                                <input type="hidden" asp-for="Student.Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <label class="col-form-label form-label col-sm-3">period</label>
+                                        <div class="col-sm-9 d-flex align-items-center">
+                                            <div class="flex">
+                                                <select class="form-control" asp-for="Period" asp-items="Model.Periods"></select>
+                                                <div>
+                                                    <span asp-validation-for="Period" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <label class="col-form-label form-label col-sm-3">fee</label>
+                                        <div class="col-sm-9 d-flex align-items-center">
+                                            <div class="flex">
+                                                <select class="form-control" asp-for="Fee" asp-items="Model.Fees"></select>
+                                                <div>
+                                                    <span asp-validation-for="Fee" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <label class="col-form-label form-label col-sm-3">amount payable</label>
+                                        <div class="col-sm-9 d-flex align-items-center">
+                                            <div class="flex">
+                                                <table >
+                                                    <thead>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Access Charge</td>
+                                                            <td style="font-weight:bold;"> - ₦ <input asp-for="AccessCharge" asp-format="{0:#,###}" disabled />
+                                                                <input id="hfAccessCharge" type="hidden" asp-for="AccessCharge" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Registration Fee</td>
+                                                            <td style="font-weight:bold;"> - ₦ <input asp-for="RegistrationFee" asp-format="{0:#,###}" disabled />
+                                                                <input id="hfRegistrationFee" type="hidden" asp-for="RegistrationFee" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Amount Payable</td>
+                                                            <td style="font-weight:bold;"> - ₦ <input asp-for="AmountPayable" asp-format="{0:#,###}" disabled />
+                                                                <input id="hfAmountPayable" type="hidden" asp-for="AmountPayable" />
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <div class="col-form-label form-label col-sm-3">
+                                            <label>Pay method</label>
+                                        </div>
+
+                                        <div class="col-sm-9 d-flex align-items-center">
+                                            <div class="flex">
+                                                @await Component.InvokeAsync("PaymentInfo")
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="form-group row mb-0">
+                                        <label class="col-form-label form-label col-sm-3"></label>
+                                        <div class="col-sm-9">
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="page-nav" class="col-lg-auto page-nav">
+                <div data-perfect-scrollbar>
+                    <div class="page-section pt-lg-32pt">
+                        <ul class="nav page-nav__menu">
+                            <li class="nav-item">
+                                <a id="subscription" href="#" class="nav-link active">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="ug-account" href="#" class="nav-link">Confirm</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="billing" href="#" class="nav-link">Completed</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="container page__container">
+            <div class="footer">
+                Copyright &copy; 2016 - <a href="http://themeforest.net/item/learnplus-learning-management-application/15287372?ref=mosaicpro">Purchase LearnPlus</a>
+            </div>
+        </div>*@
+</div>

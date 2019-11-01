@@ -20,11 +20,10 @@ namespace LmsGateway.Data.Setup
             string connectionString = connectionStrings["Data"];
 
             services.AddDbContext<EFDataContext>(o => o.UseSqlServer(connectionString));
-
-            //    services.AddTransient<IRepository<Media>, EFRepository<Media>>();
-            //    services.AddTransient<IRepository<Gallery>, EFRepository<Gallery>>();
-            //    services.AddTransient<IRepository<Event>, EFRepository<Event>>();
+            services.AddTransient<DbContext, EFDataContext>();
         }
+
+      
 
 
     }

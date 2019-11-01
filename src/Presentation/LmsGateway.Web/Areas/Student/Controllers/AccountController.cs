@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using LmsGateway.Domain.Users;
+using Microsoft.AspNetCore.Http;
 
 namespace LmsGateway.Web.Areas.Student.Controllers
 {
@@ -25,6 +26,12 @@ namespace LmsGateway.Web.Areas.Student.Controllers
 
         public async Task<IActionResult> Edit() => await Task.FromResult(View());
 
+        public async Task<IActionResult> Confirm()
+        {
+            return await Task.FromResult(PartialView());
+        }
+
+        
         public async Task<IActionResult> Subscription() => await Task.FromResult(View());
 
         public async Task<IActionResult> SubscriptionDetail(string view = null)
@@ -67,6 +74,14 @@ namespace LmsGateway.Web.Areas.Student.Controllers
 
             return partialView;
 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Subscription(FormCollection form)
+        {
+
+
+           return await Task.FromResult(RedirectToAction(""));
         }
 
         public async Task<IActionResult> Profile() => await Task.FromResult(View());

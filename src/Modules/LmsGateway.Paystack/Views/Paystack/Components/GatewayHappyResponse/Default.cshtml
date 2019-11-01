@@ -1,0 +1,128 @@
+﻿@model TransactionResponseModel
+@{
+    Layout = "";
+}
+<input type="hidden" asp-for="PaymentSuccessful" />
+@if (Model != null && Model.PaymentSuccessful == true)
+{
+
+    <div class="card">
+        <div class="card-header d-flex align-items-center">
+            <div class="flex">
+                <h4 class="card-title text-@Model.AlertType">@Model.ThankYou</h4>
+                              
+                <div>
+                    An email has been sent to your registered email (@Model.ResponseData.customer.email). You can print or download your invoice by clicking the above 'Print' or 'Order as PDF' button respectively. To do a re-order, click the 'Re-order' button below or click <a href="@Model.HomePageUrl"><i class="fa fa-home"></i><span> here</span></a> to go back to home page
+                </div>
+
+                <div class="card border-left-3 border-left-info" style="margin-top:20px;">
+                    <div class="card-body">
+                        <p class="card-text ">
+                            <table class="text-@Model.AlertType">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><b>Currency</b></td>
+                                        <td>@Model.Currency</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Response Description</b></td>
+                                        <td>@Model.GatewayResponse</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Transaction Ref No</b></td>
+                                        <td>@Model.TransactionReference</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Transaction Status</b></td>
+                                        <td>@Model.TransactionStatus</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    if (Model.ErrorMessage != null && Model.ErrorMessage.HasValue())
+    {
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <div class="flex">
+                    <h4 class="card-title text-@Model.AlertType">@Model.ThankYou</h4>
+                    <div>
+                        Your transaction failed with reason: @Model.ResponseData.gateway_response.
+                    </div>
+
+                    <div class="card border-left-3 border-left-danger" style="margin-top:20px;">
+                        <div class="card-body">
+                            <p class="card-text ">
+                                <table class="text-@Model.AlertType">
+                                    <thead>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @*<tr>
+                                                <td><b>Currency</b></td>
+                                                <td>@Model.Currency</td>
+                                            </tr>*@
+                                        <tr>
+                                            <td><b>Response Description</b></td>
+                                            <td>@Model.GatewayResponse</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Transaction Ref No</b></td>
+                                            <td>@Model.TransactionReference</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Transaction Status</b></td>
+                                            <td>@Model.TransactionStatus</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <div class="flex">
+                    <h4 class="card-title text-danger">Error occurred!</h4>
+                    @*<div>
+                            Your transaction failed with reason: @Model.ResponseData.gateway_response.
+                        </div>*@
+
+                    <div class="card border-left-3 border-left-danger" style="margin-top:20px;">
+                        <div class="card-body">
+                            <div class="alert bg-danger text-white border-0" role="alert">
+                                <strong> Error occurred during request processing! Plesae try again</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+}
+
+
