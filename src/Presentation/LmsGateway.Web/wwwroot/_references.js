@@ -1,4 +1,5 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="../modules/lmsgateway.paystack/wwwroot/js/main.js" />
 /// <reference path="js/admin/app.js" />
 /// <reference path="js/admin/app-settings.js" />
 /// <reference path="js/admin/chartjs.js" />
