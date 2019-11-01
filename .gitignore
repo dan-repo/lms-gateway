@@ -244,3 +244,5 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 
+src/Presentation/LmsGateway.Web/Modules/
+src/Presentation/LmsGateway.Web/Plugins/
